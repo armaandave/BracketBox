@@ -1,0 +1,63 @@
+body {
+    font-family: 'Varela';    
+    background-color: lightgrey;
+}
+
+.parent_div {
+    display: flex;
+    padding-top: 5%;    
+    background-color: whitesmoke;
+    min-height: 100vh;
+    align-content: center;
+}
+
+.main_div {
+    
+    align-content: center;
+}
+
+.grade_color_box {   
+
+    color: #293845;
+    font-size: 1.8em;
+    font-weight: bold;
+    background-color: #90bcb3;
+    border-color: #207868;
+    border-radius: 0px;
+    padding: .45rem .65rem;
+    max-width: 250px;
+}
+
+.center {
+    text-align: center;
+}
+
+.rating {
+    color: #293845;
+    font-size: 1.00em;
+    font-weight: 500;    
+    font-style: italic;
+}
+
+.title {
+    font-size: 1.75em;
+    font-weight: bold;
+    color: #293845;    
+}
+
+.table_movie_dataset {
+    border: 2px solid #dee2e6;
+}
+
+.list_link {
+
+    color: black;
+
+}
+
+.carousel_picture{
+
+    height: 44.444%;
+    width: 100%;
+
+}

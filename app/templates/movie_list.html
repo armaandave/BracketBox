@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>All Movies</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-flex justify-content-center">
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="http://localhost:5000/index/">Bracket Box</a>
+    
+    <!-- Links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+        <a class="nav-link" href="http://localhost:5000/movie_list"> All Movies</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">Charts</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">Best and Worsts</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="about_us">About us</a>
+        </li>
+    </ul>
+</nav>
+<div class="container parent_div w-75">
+
+  <div class = "col-1"></div>
+
+  <ul class="col-9 ml-5 list-group">
+
+    {% for movies in complete_movie_list %}
+
+    <li class="list-group-item"> <a class="list_link" href="http://localhost:5000/movie_page"> {{movies}} </a> </li>
+
+    {% endfor %}
+
+  </ul>
+
+</div>
+</body>
+</html>
