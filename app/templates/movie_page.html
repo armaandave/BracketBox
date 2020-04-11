@@ -60,8 +60,16 @@
 
     <tbody>
       <tr>
+        <th scope="row">Opening Weekend:</th>
+        <td colspan="2">{{movie_data["movie_opening_weekend"]}}</td>
+      </tr>
+      <tr>
         <th scope="row">Domestic Gross:</th>
         <td>{{movie_data["movie_domestic_gross"]}}</td>
+      </tr>
+      <tr>
+        <th scope="row">International Gross:</th>
+        <td colspan="2">{{movie_data["movie_international_gross"]}}</td>
       </tr>
       <tr>
         <th scope="row">Worldwide Gross:</th>
@@ -75,7 +83,7 @@
   </table>
 </div>
 
-<div class = "col-12">
+<div>
 
     <span>{{movie_data["movie_synopsis"]}}</span>
 
