@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-  <title>{{movie_data["movie_title"]}}</title>
+  <title>{{movie_data["movie_title"]}} ({{movie_data["movie_year"]}})</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -34,25 +34,27 @@
         </li>
     </ul>
 </nav>
-<div class="container parent_div w-75">
+<div class="container-fluid parent_div w-75">
 
 
-<div class="row col-12 d-flex justify-content-around">
-  <div class="col-4 d-flex justify-content-end">
-<img src="{{ url_for('static', filename='img/Joker.jpg') }}" id = "movie_poster" class="float-left" alt="Paris" width="222px" height="333px"> 
+<div class="container">
+
+  <div class="d-flex row col-12 ">
+  <div class="col-3 d-flex">
+<img src={{movie_data["movie_poster"]}} id = "movie_poster" class="float-left" alt="Paris" width="222px" height="333px"> 
 </div>
 
-<div class="col-8">
+<div class="col-9">
   <div class="d-flex flex-row col-12">
     <div class="alert grade_color_box  col-3 center">
       {{movie_data["movie_score"]}}
     </div>
     <div class="col-3 mt-1 rating">
       <span>Rated {{movie_data["movie_mpaa_rating"]}}</span><br/>
-      <span>{{movie_data["movie_runtime"]}}</span>
+      <span>{{movie_data["movie_genre"]}}</span><br/>
+      <span>{{movie_data["movie_runtime"]}} minutes</span>
     </div>
-    <div class="col-6 pr-0 d-flex justify-content-end mt-1 title">{{movie_data["movie_title"]}} {{movie_data["movie_year"]}}</div>
-
+    <div class="col-6 pr-0 d-flex justify-content-end mt-1 title">{{movie_data["movie_title"]}} ({{movie_data["movie_year"]}})</div>
 </div>
 
 <div class="col-12 d-flex justify-content-end align-items-start pl-3">
@@ -61,37 +63,37 @@
     <tbody>
       <tr>
         <th scope="row">Opening Weekend:</th>
-        <td colspan="2">{{movie_data["movie_opening_weekend"]}}</td>
+        <td colspan="2">${{movie_data["movie_opening_weekend"]}}</td>
       </tr>
       <tr>
         <th scope="row">Domestic Gross:</th>
-        <td>{{movie_data["movie_domestic_gross"]}}</td>
+        <td>${{movie_data["movie_domestic_gross"]}}</td>
       </tr>
       <tr>
         <th scope="row">International Gross:</th>
-        <td colspan="2">{{movie_data["movie_international_gross"]}}</td>
+        <td colspan="2">${{movie_data["movie_international_gross"]}}</td>
       </tr>
       <tr>
         <th scope="row">Worldwide Gross:</th>
-        <td>{{movie_data["movie_worldwide_gross"]}}</td>
+        <td>${{movie_data["movie_worldwide_gross"]}}</td>
       </tr>
       <tr>
         <th scope="row">Budget:</th>
-        <td colspan="2">{{movie_data["movie_budget"]}}</td>
+        <td colspan="2">${{movie_data["movie_budget"]}}</td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<div>
-
-    <span>{{movie_data["movie_synopsis"]}}</span>
-
-</div>
-
 
 </div> 
+
 </div>
+<div class="d-flex row col-12">
+  <div class = "col-auto synopsis">{{movie_data["movie_synopsis"]}}</div>
+</div>
+</div>
+
 </div>
 </body>
 </html>

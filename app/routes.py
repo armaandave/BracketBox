@@ -1,5 +1,9 @@
 from app import app
 from flask import render_template, url_for
+import pandas as pd
+
+master_table = pd.read_csv('/Users/armaan/src/bbox/mdata/final_result/master_table.csv') 
+
 
 @app.route('/')
 @app.route('/index/')
@@ -10,30 +14,40 @@ def index():
 
 @app.route('/movie_list')
 def movie_list():
+    num_movies = len(master_table)
 
-    complete_movie_list = ["Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame","Joker", "Frozen 2", "Avengers: Endgame"]
+    title_list = master_table["name"]
+    year_list = master_table["year"]
 
-    return render_template('movie_list.html', complete_movie_list = complete_movie_list)
+    return render_template('movie_list.html', title_list = title_list, year_list = year_list, num_movies = num_movies)
 
 
-@app.route('/movie_page')
-def movie_page():
+@app.route('/movie_page/<movie_data>')
+def movie_page(movie_data):
+    movie_data = movie_data.split("^")
+    title, year = movie_data[0], int(movie_data[1])
+    movie_info = master_table[(master_table["name"] == title) & (master_table["year"] == year)]
+
 
     movie_dict = {
-
-    'movie_score' : 92,
-    'movie_mpaa_rating' : 'R',
-    'movie_runtime' : '2h 2min',
-    'movie_title' : 'Joker',
-    'movie_year' : '(2019)',
-    'movie_opening_weekend': '$96,202,337',
-    'movie_domestic_gross' : '$332,224,446',
-    'movie_international_gross': '$738,792,258',
-    'movie_worldwide_gross' : '$1,055,824,446',
-    'movie_budget' : '$62,500,000',
-    'movie_synopsis' : 'During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.'
-    
-
+    'movie_score' : int(movie_info["bb_score"].values[0]),
+    'movie_mpaa_rating' : (movie_info["mpaa_rating"].values[0]),
+    'movie_runtime' : (movie_info["running_time"].values[0]),
+    'movie_title' : (movie_info["name"].values[0]),
+    'movie_year' : (movie_info["year"].values[0]),
+    'movie_opening_weekend': (movie_info["opening_weekend"].values[0]),
+    'movie_domestic_gross' : (movie_info["domestic_box_office"].values[0]),
+    'movie_international_gross': (movie_info["international_box_office"].values[0]),
+    'movie_worldwide_gross' : (movie_info["worldwide_box_office"].values[0]),
+    'movie_budget' : (movie_info["production_budget"].values[0]),
+    'movie_synopsis' : (movie_info["synopsis"].values[0]),
+    'movie_poster': (movie_info["poster_path"].values[0]),
+    'movie_distributor': (movie_info["production_companies"].values[0]),
+    'movie_legs': (movie_info["legs"].values[0]),
+    'movie_theaters': (movie_info["theater_counts"].values[0]),
+    'movie_genre': (movie_info["genre"].values[0]),
+    'movie_pscore': (movie_info["bb_profit_score"].values[0]),
+    'movie_mscore': (movie_info["bb_multiple_score"].values[0])
     }
 
 

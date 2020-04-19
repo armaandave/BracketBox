@@ -39,11 +39,9 @@
   <div class = "col-1"></div>
 
   <ul class="col-9 ml-5 list-group">
-
-    {% for movies in complete_movie_list %}
-
-    <li class="list-group-item"> <a class="list_link" href="http://localhost:5000/movie_page"> {{movies}} </a> </li>
-
+    {% for x in range(0, num_movies)%}
+    {% set url_end = "{}^{}".format(title_list[x], year_list[x]) %}
+    <li class="list-group-item"> <a class="list_link" href="http://localhost:5000/movie_page/{{url_end}}"> {{title_list[x]}} ({{year_list[x]}}) </a> </li>
     {% endfor %}
 
   </ul>

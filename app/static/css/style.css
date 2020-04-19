@@ -4,15 +4,13 @@ body {
 }
 
 .parent_div {
-    display: flex;
-    padding-top: 5%;    
     background-color: whitesmoke;
     min-height: 100vh;
-    align-content: center;
+    padding-top: 5%;
+    height: 100%;
 }
 
-.main_div {
-    
+.main_div  {
     align-content: center;
 }
 
@@ -79,4 +77,11 @@ body {
     width: 40% !important;
     border-top-left-radius: calc(.25rem - 1px);
     border-top-right-radius: calc(.25rem - 1px);
+}
+
+.synopsis {
+
+    font-size: 1.1em;
+    color: #293845; 
+
 }
