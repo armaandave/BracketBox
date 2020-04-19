@@ -40,7 +40,7 @@
 
   <ul class="col-9 ml-5 list-group">
     {% for x in range(0, num_movies)%}
-    {% set url = "{movie_page/{}^{}".format(url_for('index'),title_list[x], year_list[x]) %}
+    {% set url = "movie_page/{}^{}".format(title_list[x], year_list[x]) %}
     <li class="list-group-item"> <a class="list_link" href="{{ url }}"> {{title_list[x]}} ({{year_list[x]}}) </a> </li>
     {% endfor %}
 
