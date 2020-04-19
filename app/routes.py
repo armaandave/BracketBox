@@ -2,7 +2,7 @@ from app import app
 from flask import render_template, url_for
 import pandas as pd
 
-master_table = pd.read_csv('/Users/armaan/src/bbox/mdata/final_result/master_table.csv') 
+master_table = pd.read_csv('mdata/final_result/master_table.csv') 
 
 
 @app.route('/')
