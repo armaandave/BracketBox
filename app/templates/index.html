@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
 
-  <title>Bracket Box</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
-</head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <link href="https://fonts.googleapis.com/css?family=Varela"
+      rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',
+      filename='css/style.css') }}">
+  </head>
 <body>
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-flex justify-content-center">
     <!-- Brand/logo -->
@@ -38,9 +44,62 @@
 <div class="container parent_div w-75">
 
 
+<div class="col-12">
+
+  <table class = "col-6">
+    <caption>Weekly totals</caption>
+    <thead>
+        <tr>
+            <th scope="col">Movies</th>
+            <th scope="col">Gross</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Onward</th>
+            <td>$3,000</td>
+        </tr>
+        <tr>
+            <th scope="row">Stationery</th>
+            <td>$18,000</td>
+        </tr>
+        <tr>
+          <th scope="row">Stationery</th>
+          <td>$18,000</td>
+      </tr>
+    </tbody>
+</table>
+
+  <table class = "col-6">
+    <caption>2020 leaders</caption>
+    <thead>
+        <tr>
+            <th scope="col">Movies</th>
+            <th scope="col">Gross</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Donuts</th>
+            <td>$3,000</td>
+        </tr>
+        <tr>
+            <th scope="row">Stationery</th>
+            <td>$18,000</td>
+        </tr>
+        <tr>
+          <th scope="row">Stationery</th>
+          <td>$18,000</td>
+      </tr>
+    </tbody>
+</table>
+
 
 </div>
 
+
 </div>
+</div>
+</body>
 </body>
 </html>
