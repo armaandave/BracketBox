@@ -102,6 +102,7 @@ caption {
 }
 
 table {
+    margin-top: 35px;
     border-collapse: collapse;
     border: 2px solid rgb(200, 200, 200);
     letter-spacing: 1px;
@@ -122,5 +123,11 @@ td {
 caption{
 
     text-align: center;
+
+}
+
+.poster_score {
+
+    background-color: aqua;
 
 }
