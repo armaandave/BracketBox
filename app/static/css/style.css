@@ -83,6 +83,7 @@ body {
 
     font-size: 1.1em;
     color: #293845; 
+    margin-top: 35px;
 
 }
 
@@ -129,5 +130,17 @@ caption{
 .poster_score {
 
     background-color: aqua;
+
+}
+
+.home_title {
+
+    text-align: center;
+
+}
+
+.chartjs{
+
+    
 
 }
