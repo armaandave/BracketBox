@@ -57,30 +57,24 @@
     </div>
   {% endfor %}
 </div>
-
 <div class="d-flex col-12">
 <div class="col-6 mr-2 pl-0">
   <table class="w-100">
-    <caption>Weekly totals</caption>
+
+    <caption>Weekly leaders</caption>
     <thead>
         <tr>
-            <th scope="col">Movies</th>
-            <th scope="col">Gross</th>
+            <th scope="col">Rank</th>
+            <th scope="col">Movie</th>
         </tr>
     </thead>
     <tbody>
+      {% for y in range(0,3)%}
         <tr>
-            <th scope="row">Onward</th>
-            <td>$3,000</td>
+            <th scope="row">{{y+1}}</th>
+            <td>{{weekly_dict["movie_name"][y]}}</td>
         </tr>
-        <tr>
-            <th scope="row">Harry Potter and the chamber of secrets</th>
-            <td>$200,000,000</td>
-        </tr>
-        <tr>
-          <th scope="row">Stationery</th>
-          <td>$18,000</td>
-      </tr>
+      {% endfor %}
     </tbody>
 </table>
 </div>
@@ -94,18 +88,12 @@
         </tr>
     </thead>
     <tbody>
+        {% for y in range(0,3)%}
         <tr>
-            <th scope="row">Donuts</th>
-            <td>$3,000</td>
+            <th scope="row">{{y+1}}</th>
+            <td>{{yearly_dict["movie_name"][y]}}</td>
         </tr>
-        <tr>
-            <th scope="row">Stationery</th>
-            <td>$18,000</td>
-        </tr>
-        <tr>
-          <th scope="row">Stationery</th>
-          <td>$18,000</td>
-      </tr>
+      {% endfor %}
     </tbody>
 </table>
 </div>
@@ -113,7 +101,7 @@
 
 <div class="col-12">
   <table class = "col-12">
-    <caption>2020 leaders</caption>
+    <caption>All-time leaders</caption>
     <thead>
         <tr>
             <th scope="col">Movies</th>
@@ -121,18 +109,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">Donuts</th>
-            <td>$3,000</td>
-        </tr>
-        <tr>
-            <th scope="row">Stationery</th>
-            <td>$18,000</td>
-        </tr>
-        <tr>
-          <th scope="row">Stationery</th>
-          <td>$18,000</td>
+      {% for y in range(0,3)%}
+      <tr>
+          <th scope="row">{{y+1}}</th>
+          <td>{{movie_dict["movie_title"][y]}}</td>
       </tr>
+      {% endfor %}
     </tbody>
   </table
 </div>

@@ -1,14 +1,24 @@
 from app import app
 from flask import render_template, url_for
 import pandas as pd
+from datetime import date
 
+current_year = date.today().year
 master_table = pd.read_csv('mdata/final_result/master_table.csv')
+weekly_table = pd.read_csv('mdata/thenum/weekly_tops/weekly_tops.csv')
+yearly_table = pd.read_csv('mdata/thenum/yearly_tops/2020_tops.csv')
 
 
 @app.route('/')
 def index():
+    yearly_dict = {
+        "movie_name": yearly_table["name"].values
+    }
 
-    master_table.sort_values(by='domestic_box_office',
+    weekly_dict = {
+        "movie_name": weekly_table["name"].values
+    }
+    master_table.sort_values(by='worldwide_box_office',
                              ascending=False, inplace=True)
     x = 6
     top_4 = master_table[:x]
@@ -18,7 +28,7 @@ def index():
         'movie_title': top_4["name"].values
     }
 
-    return render_template('index.html', movie_dict=movie_dict, x=x)
+    return render_template('index.html', movie_dict=movie_dict, weekly_dict=weekly_dict, yearly_dict=yearly_dict, x=x)
 
 
 @app.route('/movie_list')
