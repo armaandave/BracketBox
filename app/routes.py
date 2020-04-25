@@ -2,6 +2,7 @@ from app import app
 from flask import render_template, url_for
 import pandas as pd
 from datetime import date
+from flask import json
 
 current_year = date.today().year
 master_table = pd.read_csv('mdata/final_result/master_table.csv')
@@ -11,6 +12,7 @@ yearly_table = pd.read_csv('mdata/thenum/yearly_tops/2020_tops.csv')
 
 @app.route('/')
 def index():
+
     yearly_dict = {
         "movie_name": yearly_table["name"].values
     }
@@ -43,6 +45,19 @@ def movie_list():
 
 @app.route('/movie_page/<movie_data>')
 def movie_page(movie_data):
+
+    labels = [
+        'JAN', 'FEB', 'MAR', 'APR',
+        'MAY', 'JUN', 'JUL', 'AUG',
+        'SEP', 'OCT', 'NOV', 'DEC'
+    ]
+
+    values = [
+        967.67, 1190.89, 1079.75, 1349.19,
+        2328.91, 2504.28, 2873.83, 4764.87,
+        4349.29, 6458.30, 9907, 16297
+    ]
+
     movie_data = movie_data.split("^")
     title, year = movie_data[0], int(movie_data[1])
     movie_info = master_table[(master_table["name"] == title) & (
@@ -68,7 +83,7 @@ def movie_page(movie_data):
         'movie_pscore': (movie_info["bb_profit_score"].values[0]),
         'movie_mscore': (movie_info["bb_profit_multiple_score"].values[0])
     }
-    return render_template('movie_page.html', movie_data=movie_dict)
+    return render_template('movie_page.html', movie_data=movie_dict, labels=labels, values=values)
 
 
 if __name__ == '__main__':
