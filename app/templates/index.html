@@ -1,127 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
 
-    <title></title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script
-      src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <link href="https://fonts.googleapis.com/css?family=Varela"
-      rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',
+<head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167281977-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-167281977-1');
+  </script>
+
+
+  <title>BracketBox</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',
       filename='css/style.css') }}">
-  </head>
+</head>
+
 <body>
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-flex justify-content-center">
     <!-- Brand/logo -->
     <a class="navbar-brand" href="{{ url_for('index') }}">Bracket Box</a>
-    
+
     <!-- Links -->
     <ul class="navbar-nav">
-        <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="/movie_list"> All Movies</a>
-        </li>
-        <li class="nav-item">
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="#">Charts</a>
-        </li>
-        <li class="nav-item">
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="#">Best and Worsts</a>
-        </li>
-        <li class="nav-item">
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="#">About us</a>
-        </li>
+      </li>
     </ul>
-</nav>
+  </nav>
 
-<div class="container parent_div w-75">
-  <div class="row ml-1 mr-1 ">
-  {% for y in range(0,x)%}
-    <div class="col-sm-2">
-    <div class="card-block">
-      <img class="card-img-top" src="{{movie_dict["movie_poster"][y]}}" alt="Card image" height="220px">
-      <div class="card-img-overlay">
-        <span class="label label-default">68</span>
+  <div class="container parent_div w-75">
+    <div class="row ml-1 mr-1 ">
+      {% for y in range(0,x)%}
+      <div class="col-sm-2">
+        <div class="card-block">
+          <img class="card-img-top" src="{{movie_dict["movie_poster"][y]}}" alt="Card image" height="220px">
+          <div class="card-img-overlay">
+            <span class="label label-default">68</span>
+          </div>
+          <div class="home_title">
+            <a>{{movie_dict["movie_title"][y]}}</a>
+          </div>
+        </div>
       </div>
-      <div class="home_title">
-        <a>{{movie_dict["movie_title"][y]}}</a>
+      {% endfor %}
+    </div>
+    <div class="d-flex col-12">
+      <div class="col-6 mr-2 pl-0">
+        <table class="w-100">
+
+          <caption>Weekly leaders</caption>
+          <thead>
+            <tr>
+              <th scope="col">Rank</th>
+              <th scope="col">Movie</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for y in range(0,3)%}
+            <tr>
+              <th scope="row">{{y+1}}</th>
+              <td>{{weekly_dict["movie_name"][y]}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="col-6 ml-2">
+        <table class="w-100">
+          <caption>2020 leaders</caption>
+          <thead>
+            <tr>
+              <th scope="col">Movies</th>
+              <th scope="col">Gross</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for y in range(0,3)%}
+            <tr>
+              <th scope="row">{{y+1}}</th>
+              <td>{{yearly_dict["movie_name"][y]}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </div>
     </div>
+
+    <div class="col-12">
+      <table class="col-12">
+        <caption>All-time leaders</caption>
+        <thead>
+          <tr>
+            <th scope="col">Movies</th>
+            <th scope="col">Gross</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for y in range(0,3)%}
+          <tr>
+            <th scope="row">{{y+1}}</th>
+            <td>{{movie_dict["movie_title"][y]}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
-  {% endfor %}
-</div>
-<div class="d-flex col-12">
-<div class="col-6 mr-2 pl-0">
-  <table class="w-100">
-
-    <caption>Weekly leaders</caption>
-    <thead>
-        <tr>
-            <th scope="col">Rank</th>
-            <th scope="col">Movie</th>
-        </tr>
-    </thead>
-    <tbody>
-      {% for y in range(0,3)%}
-        <tr>
-            <th scope="row">{{y+1}}</th>
-            <td>{{weekly_dict["movie_name"][y]}}</td>
-        </tr>
-      {% endfor %}
-    </tbody>
-</table>
-</div>
-  <div class="col-6 ml-2">
-  <table class="w-100">
-    <caption>2020 leaders</caption>
-    <thead>
-        <tr>
-            <th scope="col">Movies</th>
-            <th scope="col">Gross</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for y in range(0,3)%}
-        <tr>
-            <th scope="row">{{y+1}}</th>
-            <td>{{yearly_dict["movie_name"][y]}}</td>
-        </tr>
-      {% endfor %}
-    </tbody>
-</table>
-</div>
-</div>
-
-<div class="col-12">
-  <table class = "col-12">
-    <caption>All-time leaders</caption>
-    <thead>
-        <tr>
-            <th scope="col">Movies</th>
-            <th scope="col">Gross</th>
-        </tr>
-    </thead>
-    <tbody>
-      {% for y in range(0,3)%}
-      <tr>
-          <th scope="row">{{y+1}}</th>
-          <td>{{movie_dict["movie_title"][y]}}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
 
 
-</div>
-</div>
+  </div>
+  </div>
 </body>
 </body>
+
 </html>

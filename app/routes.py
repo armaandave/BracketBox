@@ -8,6 +8,8 @@ current_year = date.today().year
 master_table = pd.read_csv('mdata/final_result/master_table.csv')
 weekly_table = pd.read_csv('mdata/thenum/weekly_tops/weekly_tops.csv')
 yearly_table = pd.read_csv('mdata/thenum/yearly_tops/2020_tops.csv')
+binned_table = pd.read_csv('mdata/final_result/binned_table.csv')
+genre_table = pd.read_csv('mdata/final_result/genre_table.csv')
 
 
 @app.route('/')
@@ -45,19 +47,8 @@ def movie_list():
 
 @app.route('/movie_page/<movie_data>')
 def movie_page(movie_data):
-
-    labels = [
-        'JAN', 'FEB', 'MAR', 'APR',
-        'MAY', 'JUN', 'JUL', 'AUG',
-        'SEP', 'OCT', 'NOV', 'DEC'
-    ]
-
-    values = [
-        967.67, 1190.89, 1079.75, 1349.19,
-        2328.91, 2504.28, 2873.83, 4764.87,
-        4349.29, 6458.30, 9907, 16297
-    ]
-
+    labels = binned_table.binned.to_list()
+    values = binned_table.bb_score.to_list()
     movie_data = movie_data.split("^")
     title, year = movie_data[0], int(movie_data[1])
     movie_info = master_table[(master_table["name"] == title) & (
@@ -83,6 +74,10 @@ def movie_page(movie_data):
         'movie_pscore': (movie_info["bb_profit_score"].values[0]),
         'movie_mscore': (movie_info["bb_profit_multiple_score"].values[0])
     }
+
+    movie_dict['genre_bb'] = genre_table[genre_table.genre ==
+                                         movie_dict['movie_genre']].bb_score.values[0]
+
     return render_template('movie_page.html', movie_data=movie_dict, labels=labels, values=values)
 
 
