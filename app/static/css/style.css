@@ -83,6 +83,9 @@ body {
 
     font-size: 1.1em;
     color: #293845; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
 }
 
