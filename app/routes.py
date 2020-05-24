@@ -81,5 +81,11 @@ def movie_page(movie_data):
     return render_template('movie_page.html', movie_data=movie_dict, labels=labels, values=values)
 
 
+@app.route('/about_us')
+def about_us():
+
+    return render_template('about_us.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
