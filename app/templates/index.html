@@ -30,7 +30,9 @@
 <body>
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-flex justify-content-center">
     <!-- Brand/logo -->
-    <a class="navbar-brand" href="{{ url_for('index') }}">Bracket Box</a>
+    <a class="navbar-brand" href="{{ url_for('index') }}"><span><img
+          src="{{ url_for('static', filename='templates/isolated-monochrome-black.svg') }}" alt=""></span>
+      Bracket Box</a>
 
     <!-- Links -->
     <ul class="navbar-nav">
@@ -50,10 +52,10 @@
         <div class="card-block">
           <img class="card-img-top" src="{{movie_dict["movie_poster"][y]}}" alt="Card image" height="220px">
           <div class="card-img-overlay">
-            <span class="label label-default">68</span>
+            <span class="label label-default"></span>
           </div>
           <div class="home_title">
-            <a>{{movie_dict["movie_title"][y]}}</a>
+            <a></a>
           </div>
         </div>
       </div>
