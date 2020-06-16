@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
   <title>All Movies</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +12,8 @@
   <link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',
       filename='css/style.css') }}">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css"
+    integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8=" crossorigin="anonymous">
 </head>
 
 <body>
@@ -21,7 +21,6 @@
       justify-content-center">
     <!-- Brand/logo -->
     <a class="navbar-brand" href="{{ url_for('index') }}">Bracket Box</a>
-
     <!-- Links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -37,15 +36,104 @@
     <div class="col-1"></div>
 
     <ul class="col-9 ml-5 list-group">
-      {% for x in range(0, num_movies)%}
+      <header>
+        <div class=mb-1 id="search-box"></div>
+      </header>
+      <main>
+        <div id="hits"></div>
+        <div id="pagination"></div>
+      </main>
+      <!--       {% for x in range(0, num_movies)%}
       {% set url = "/movie_page/{}^{}".format(title_list[x], year_list[x]) %}
       <li class="list-group-item"> <a class="list_link" href="{{ url }}">
           {{title_list[x]}} ({{year_list[x]}}) </a> </li>
-      {% endfor %}
+      {% endfor %} -->
 
     </ul>
 
   </div>
+  <script type="text/html" id="hit-template">
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.0.0/dist/algoliasearch-lite.umd.js"
+    integrity="sha256-MfeKq2Aw9VAkaE9Caes2NOxQf6vUa8Av0JqcUXUGkd0=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js"
+    integrity="sha256-6S7q0JJs/Kx4kb/fv0oMjS855QTz5Rc2hh9AkIUjUsk=" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
 </body>
+
+<script>
+  const searchClient = algoliasearch(
+    '8IL4QFC501',
+    '211428c7d6f5720eb697b887c89d6b75' // search only API key, not admin API key
+  );
+
+  const search = instantsearch({
+    indexName: 'movie_list',
+    searchClient,
+    routing: true,
+  });
+
+  search.addWidgets([
+    instantsearch.widgets.configure({
+      hitsPerPage: 100,
+    })
+  ]);
+
+  search.addWidgets([
+    instantsearch.widgets.searchBox({
+      container: '#search-box',
+      placeholder: 'Search for Movies',
+    })
+  ]);
+
+
+  search.addWidgets([
+    instantsearch.widgets.hits({
+      container: '#hits',
+      templates: {
+        item: function (hit) {
+          return hitTemplate(hit);
+        },
+        empty: `We didn't find any results for the search <em>"{% raw %}{{query}}{% endraw %}"</em>`,
+      },
+    })
+  ]);
+
+
+
+  search.start();
+
+  function hitTemplate(hit) {
+    const name = hit.name.toString().replace(/ /g, "%20");
+    const url = "/movie_page/" + name + '^' + hit.year;
+    console.log(url)
+
+    return `
+  <div class="hit">
+      <p class="hit-name">
+      <a href=${ url} class="hit-name" >
+        ${
+      hit.name} (${hit.year})
+  
+      </a >
+      </p >
+    </div >
+  `;
+  }
+
+  index.setSettings({
+    //typoTolerance: true
+    // typoTolerance: false
+    // typoTolerance: 'min'
+    typoTolerance: 'strict',
+    hitsPerPage: 20
+  }).then(() => {
+    // done
+  });
+
+
+</script>
 
 </html>

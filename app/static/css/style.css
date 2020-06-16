@@ -146,3 +146,21 @@ caption{
     
 
 }
+
+.score_meaning {
+
+    margin-top: 100px;
+
+}
+
+.ais-Hits-item, .ais-InfiniteHits-item, .ais-InfiniteResults-item, .ais-Results-item {
+    width: calc(100% - 1rem) !important;
+    height: 50px;
+    background-color: #fff;
+    margin-top: 0rem !important;
+}
+
+.hit-name {
+
+    color: black;
+}

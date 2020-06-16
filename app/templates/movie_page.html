@@ -42,12 +42,12 @@
           <img src={{movie_data['movie_poster']}} id="movie_poster" class="float-left"
             alt="{{movie_data[" movie_title" ]}}" width="222px" height="333px">
         </div>
-
         <div class="col-9">
           <div class="d-flex flex-row col-12">
             <div class="alert grade_color_box col-3 center">
               {{movie_data["movie_score"]}}
             </div>
+
             <div class="col-3 mt-1 rating">
               <span>Rated {{movie_data["movie_mpaa_rating"]}}</span><br />
               <span>{{movie_data["movie_genre"]}}</span><br />
@@ -164,18 +164,18 @@
       pointRadius: 0,
 
       backgroundColor: [
-        'rgba(10, 10, 170, 0.9)',
+        '#38AEE6',
       ],
 
       borderColor: [
-        'rgba(10, 10, 170, 0.9)'
+        '#38AEE6'
       ],
     }
   ],
       },
 
   options: {
-    responsive: true,
+    maintainAspectRatio: false,
       scales: {
       yAxes: [{
         ticks: {

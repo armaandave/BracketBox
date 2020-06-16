@@ -1,0 +1,71 @@
+<!doctype html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css"
+        integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8=" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <div id="search-box"></div>
+    </header>
+
+    <main>
+        <div id="hits"></div>
+        <div id="pagination"></div>
+    </main>
+
+    <script type="text/html" id="hit-template">
+    <div class="hit">
+      <p class="hit-name">
+        {{#helpers.highlight}}{ "attribute": "title" }{{/helpers.highlight}}
+        {{#helpers.highlight}}{ "attribute": "link" }{{/helpers.highlight}}
+      </p>
+    </div>
+  </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.0.0/dist/algoliasearch-lite.umd.js"
+        integrity="sha256-MfeKq2Aw9VAkaE9Caes2NOxQf6vUa8Av0JqcUXUGkd0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js"
+        integrity="sha256-6S7q0JJs/Kx4kb/fv0oMjS855QTz5Rc2hh9AkIUjUsk=" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+
+<script>
+    const searchClient = algoliasearch(
+        '8IL4QFC501',
+        '211428c7d6f5720eb697b887c89d6b75' // search only API key, not admin API key
+    );
+
+    const search = instantsearch({
+        indexName: 'movie_list',
+        searchClient,
+        routing: true,
+    });
+
+    search.addWidgets([
+        instantsearch.widgets.configure({
+            hitsPerPage: 100,
+        })
+    ]);
+
+    search.addWidgets([
+        instantsearch.widgets.searchBox({
+            container: '#search-box',
+            placeholder: 'Search for contacts',
+        })
+    ]);
+
+    search.addWidgets([
+        instantsearch.widgets.hits({
+            container: '#hits',
+            templates: {
+                item: document.getElementById('hit-template').innerHTML,
+                empty: `We didn't find any results for the search <em>"{{query}}"</em>`,
+            },
+        })
+    ]);
+
+    search.start();
+</script>

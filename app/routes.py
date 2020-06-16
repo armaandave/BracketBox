@@ -47,6 +47,7 @@ def movie_list():
 
 @app.route('/movie_page/<movie_data>')
 def movie_page(movie_data):
+    print(movie_data)
     labels = binned_table.binned.to_list()
     values = binned_table.bb_score.to_list()
     movie_data = movie_data.split("^")
@@ -75,6 +76,7 @@ def movie_page(movie_data):
         'movie_mscore': (movie_info["bb_profit_multiple_score"].values[0])
     }
 
+    print(movie_dict)
     movie_dict['genre_bb'] = genre_table[genre_table.genre ==
                                          movie_dict['movie_genre']].bb_score.values[0]
 
