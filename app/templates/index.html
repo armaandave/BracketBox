@@ -41,6 +41,9 @@
         <a class="nav-link" href="/movie_list"> All Movies</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="/trending">Trending</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="/about_us">About us</a>
       </li>
     </ul>
@@ -129,5 +132,16 @@
   </div>
 </body>
 </body>
+
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+  $(function () {
+    $('a').each(function () {
+      if ($(this).prop('href') == window.location.href) {
+        $(this).addClass('active'); $(this).parents('li').addClass('active');
+      }
+    });
+  });
+</script>
 
 </html>

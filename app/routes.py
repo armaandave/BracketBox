@@ -10,6 +10,14 @@ weekly_table = pd.read_csv('mdata/thenum/weekly_tops/weekly_tops.csv')
 yearly_table = pd.read_csv('mdata/thenum/yearly_tops/2020_tops.csv')
 binned_table = pd.read_csv('mdata/final_result/binned_table.csv')
 genre_table = pd.read_csv('mdata/final_result/genre_table.csv')
+in_theateres_table = pd.read_csv(
+    'mdata/final_result/trending/current_in_theater.csv')
+upcoming_theateres_table = pd.read_csv(
+    'mdata/final_result/trending/upcoming_in_theater.csv')
+popular_movies_table = pd.read_csv(
+    'mdata/final_result/trending/popular_movies.csv')
+popular_tv_table = pd.read_csv(
+    'mdata/final_result/trending/popular_tv.csv')
 
 
 @app.route('/')
@@ -81,6 +89,24 @@ def movie_page(movie_data):
                                          movie_dict['movie_genre']].bb_score.values[0]
 
     return render_template('movie_page.html', movie_data=movie_dict, labels=labels, values=values)
+
+
+@app.route('/trending')
+def trending():
+
+    current_title_list = in_theateres_table["title"]
+    current_poster_list = in_theateres_table["poster_path"]
+
+    upcoming_title_list = upcoming_theateres_table["title"]
+    upcoming_poster_list = upcoming_theateres_table["poster_path"]
+
+    popular_title_list = popular_movies_table["title"]
+    popular_poster_list = popular_movies_table["poster_path"]
+
+    popular_tv_list = popular_tv_table["title"]
+    popular_tv_poster_list = popular_tv_table["poster_path"]
+
+    return render_template('trending.html', current_title_list=current_title_list, current_poster_list=current_poster_list, upcoming_poster_list=upcoming_poster_list, upcoming_title_list=upcoming_title_list, popular_title_list=popular_title_list, popular_poster_list=popular_poster_list, popular_tv_list=popular_tv_list, popular_tv_poster_list=popular_tv_poster_list)
 
 
 @app.route('/about_us')

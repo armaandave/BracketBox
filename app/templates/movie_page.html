@@ -28,6 +28,9 @@
         <a class="nav-link" href="/movie_list"> All Movies</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="/trending">Trending</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="/about_us">About us</a>
       </li>
     </ul>
@@ -44,7 +47,7 @@
         </div>
         <div class="col-9">
           <div class="d-flex flex-row col-12">
-            <div class="alert grade_color_box col-3 center">
+            <div class="alert grade_color_box col-3 center" data-color="{{movie_data["movie_score"]}}">
               {{movie_data["movie_score"]}}
             </div>
 
@@ -90,10 +93,14 @@
 
       </div>
       <div class="d-flex row col-12 mt-3">
-        <div class="col-auto synopsis">{{movie_data["movie_synopsis"]}}</div>
+
+        <div class="comment more">
+          {{movie_data["movie_synopsis"]}}
+        </div>
+
       </div>
       <div class="d-flex row col-12">
-        <div class="col-6 mt-5">
+        <div class="col-6 mt-3">
           <canvas id="myChart" width="400" height="400"></canvas>
         </div>
 
@@ -103,6 +110,41 @@
 
     </div>
 </body>
+<script>
+  $(document).ready(function () {
+    var showChar = 250;
+    var ellipsestext = "...";
+    var moretext = "more";
+    var lesstext = "less";
+    $('.more').each(function () {
+      var content = $(this).html();
+
+      if (content.length > showChar) {
+
+        var c = content.substr(0, showChar);
+        var h = content.substr(showChar - 1, content.length - showChar);
+
+        var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+
+        $(this).html(html);
+      }
+
+    });
+
+    $(".morelink").click(function () {
+      if ($(this).hasClass("less")) {
+        $(this).removeClass("less");
+        $(this).html(moretext);
+      } else {
+        $(this).addClass("less");
+        $(this).html(lesstext);
+      }
+      $(this).parent().prev().toggle();
+      $(this).prev().toggle();
+      return false;
+    });
+  });
+</script>
 <script>
   var genre_bb = {{ movie_data["genre_bb"] }};
   var movie_bb = {{ movie_data["movie_score"] }};
@@ -121,25 +163,6 @@
 
   datasets: [
     {
-      label: 'Yearly Average',
-      type: 'bar',
-      data: bb_avg_years,
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.9)',
-        'rgba(255, 99, 132, 0.9)',
-        'rgba(255, 99, 132, 0.9)',
-        'rgba(255, 99, 132, 0.9)',
-        'rgba(255, 99, 132, 0.9)',
-        'rgba(255, 99, 132, 0.9)',
-        'rgba(255, 99, 132, 0.9)',
-        'rgba(255, 99, 132, 0.9)',
-      ],
-
-      borderColor: [
-        'rgba(255, 99, 132, 0.9)'
-      ],
-    },
-    {
       label: 'Genre Average',
       type: 'line',
       fill: false,
@@ -148,11 +171,30 @@
       pointRadius: 0,
 
       backgroundColor: [
-        'rgba(111, 45, 168, 0.9)'
+        '#8230e6'
       ],
 
       borderColor: [
-        'rgba(111, 45, 168, 0.9)'
+        '#8230e6'
+      ],
+    },
+    {
+      label: 'Yearly Average',
+      type: 'bar',
+      data: bb_avg_years,
+      backgroundColor: [
+        '#e64230',
+        '#e64230',
+        '#e64230',
+        '#e64230',
+        '#e64230',
+        '#e64230',
+        '#e64230',
+        '#e64230',
+      ],
+
+      borderColor: [
+        '#e64230'
       ],
     },
     {
@@ -185,6 +227,55 @@
     }
   }
   });
+</script>
+
+<script>
+
+  $(document).ready(function () {
+
+    var mc = {
+      '0-29': 'red',
+      '30-69': 'orange',
+      '70-100': 'green'
+    };
+
+    function between(x, min, max) {
+      return x >= min && x <= max;
+    }
+
+
+
+    var dc;
+    var first;
+    var second;
+    var th;
+
+    $('div').each(function (index) {
+
+      th = $(this);
+
+      dc = parseInt($(this).attr('data-color'), 10);
+
+
+      $.each(mc, function (name, value) {
+
+
+        first = parseInt(name.split('-')[0], 10);
+        second = parseInt(name.split('-')[1], 10);
+
+        console.log(between(dc, first, second));
+
+        if (between(dc, first, second)) {
+          th.addClass(value);
+        }
+
+
+
+      });
+
+    });
+  });
+
 </script>
 
 </html>

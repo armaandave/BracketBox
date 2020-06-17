@@ -52,26 +52,6 @@ body {
     color: black;
 
 }
-
-.carousel_picture{
-
-    width: 60%;
-    height:240px;
-    margin-left: auto;
-    margin-right: auto;
-    object-fit:cover;
-
-}
-
-.carousel_slide{
-
-    width: auto;
-    height:240px;
-    margin-left: auto;
-    margin-right: auto;
-
-}
-
 .poster_size{
 
     width: 40% !important;
@@ -83,9 +63,9 @@ body {
 
     font-size: 1.1em;
     color: #293845; 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* white-space: nowrap;
+    overflow: hidden; */
+    /* text-overflow: ellipsis; */
 
 }
 
@@ -163,4 +143,43 @@ caption{
 .hit-name {
 
     color: black;
+}
+
+a {
+	color: #0254EB
+}
+
+a.morelink {
+	text-decoration:none;
+	outline: none;
+}
+.morecontent span {
+	display: none;
+}
+.comment {
+	margin: 10px;
+}
+
+#nav_bar .active {
+    color:            white;
+    background-color: #4f81bd;
+}
+
+.red {
+    background-color:red;
+    border-color: red;
+}
+.orange {
+    background-color: rgba(240, 176, 15, 0.666);
+    border-color: #987220;
+}
+.green {
+    background-color: #90bcb3;
+    border-color: #207868;
+}
+
+.trending_labels {
+
+    font-family: 'Varela';  
+
 }
