@@ -104,11 +104,35 @@
           <canvas id="myChart" width="400" height="400"></canvas>
         </div>
 
+        <div class="row ml-1 mr-1 mb-5 ">
+          <!-- <h5 class="ml-3 mt-4">Similar Titles: </h5> -->
+          <div class="row ml-1 mr-1 mt-5 justify-content-center">
 
+            {% for y in range(0,x)%}
+            <div class="col-sm-2">
+              <a href="/movie_page/{{movie_data["movie_sim_movies"][y].get("link")}}">
+                <div class="card-block">
+
+                  <img class="card-img-top" src="{{movie_data["movie_sim_movies"][y].get("poster")}}"
+                    alt="{{movie_data["movie_sim_movies"][y].get("name")}}" height="205px">
+
+                  <div class="card-img-overlay">
+
+                    <span class="label label-default"></span>
+                  </div>
+                  <div class="home_title">
+                  </div>
+                </div>
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+
+
+
+        </div>
 
       </div>
-
-    </div>
 </body>
 <script>
   $(document).ready(function () {
@@ -116,15 +140,15 @@
     var ellipsestext = "...";
     var moretext = "more";
     var lesstext = "less";
-    $('.more').each(function () {
-      var content = $(this).html();
-
-      if (content.length > showChar) {
+    $(' .more').each(function () {
+      var content = $(this).html(); if (content.length > showChar) {
 
         var c = content.substr(0, showChar);
         var h = content.substr(showChar - 1, content.length - showChar);
 
-        var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+        var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent">
+          < span > ' + h + '</span> & nbsp;& nbsp; <a href="" class="morelink">' + moretext +
+                '</a></span > ';
 
         $(this).html(html);
       }

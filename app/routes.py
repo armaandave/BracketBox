@@ -3,6 +3,8 @@ from flask import render_template, url_for
 import pandas as pd
 from datetime import date
 from flask import json
+import ast
+
 
 current_year = date.today().year
 master_table = pd.read_csv('mdata/final_result/master_table.csv')
@@ -23,6 +25,9 @@ popular_tv_table = pd.read_csv(
 @app.route('/')
 def index():
 
+    popular_title_list = popular_movies_table["title"]
+    popular_poster_list = popular_movies_table["poster_path"]
+
     yearly_dict = {
         "movie_name": yearly_table["name"].values
     }
@@ -40,7 +45,7 @@ def index():
         'movie_title': top_4["name"].values
     }
 
-    return render_template('index.html', movie_dict=movie_dict, weekly_dict=weekly_dict, yearly_dict=yearly_dict, x=x)
+    return render_template('index.html', movie_dict=movie_dict, weekly_dict=weekly_dict, yearly_dict=yearly_dict, x=x, popular_poster_list=popular_poster_list, popular_title_list=popular_title_list)
 
 
 @app.route('/movie_list')
@@ -81,14 +86,17 @@ def movie_page(movie_data):
         'movie_theaters': (movie_info["theater_counts"].values[0]),
         'movie_genre': (movie_info["genre"].values[0]),
         'movie_pscore': (movie_info["bb_profit_score"].values[0]),
-        'movie_mscore': (movie_info["bb_profit_multiple_score"].values[0])
+        'movie_mscore': (movie_info["bb_profit_multiple_score"].values[0]),
+        'movie_sim_movies': (ast.literal_eval(movie_info["similar_movies"].values[0]))
     }
+
+    x = len(ast.literal_eval(movie_info["similar_movies"].values[0]))
 
     print(movie_dict)
     movie_dict['genre_bb'] = genre_table[genre_table.genre ==
                                          movie_dict['movie_genre']].bb_score.values[0]
 
-    return render_template('movie_page.html', movie_data=movie_dict, labels=labels, values=values)
+    return render_template('movie_page.html', movie_data=movie_dict, labels=labels, values=values, x=x)
 
 
 @app.route('/trending')

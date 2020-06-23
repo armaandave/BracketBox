@@ -72,13 +72,31 @@
                         </div>
                         {% endfor %}
                     </div>
-                    <h4 class="ml-3 pt-5 trending_labels">Popular Movies:</h1>
+                    <h4 class="ml-3 pt-5 trending_labels">Popular Movies:</h4>
+                    <div class="row ml-1 mr-1 ">
+                        {% for y in range(0,6)%}
+                        <div class="col-sm-2">
+                            <div class="card-block">
+                                <img class="card-img-top"
+                                    src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{popular_poster_list[y]}}"
+                                    alt="Card image" height="220px">
+                                <div class="card-img-overlay">
+                                    <span class="label label-default"></span>
+                                </div>
+                                <div class="home_title">
+                                    <a></a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <h4 class="ml-3 pt-5 trending_labels">Popular TV Shows:</h1>
                         <div class="row ml-1 mr-1 ">
                             {% for y in range(0,6)%}
                             <div class="col-sm-2">
                                 <div class="card-block">
                                     <img class="card-img-top"
-                                        src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{popular_poster_list[y]}}"
+                                        src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{popular_tv_poster_list[y]}}"
                                         alt="Card image" height="220px">
                                     <div class="card-img-overlay">
                                         <span class="label label-default"></span>
@@ -90,24 +108,6 @@
                             </div>
                             {% endfor %}
                         </div>
-                        <h4 class="ml-3 pt-5 trending_labels">Popular TV Shows:</h1>
-                            <div class="row ml-1 mr-1 ">
-                                {% for y in range(0,6)%}
-                                <div class="col-sm-2">
-                                    <div class="card-block">
-                                        <img class="card-img-top"
-                                            src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{popular_tv_poster_list[y]}}"
-                                            alt="Card image" height="220px">
-                                        <div class="card-img-overlay">
-                                            <span class="label label-default"></span>
-                                        </div>
-                                        <div class="home_title">
-                                            <a></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            </div>
             </div>
 
 </body>
