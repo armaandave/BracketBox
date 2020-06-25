@@ -43,9 +43,13 @@
       <div class="d-flex row col-12">
         <div class="col-3 d-flex">
           <img src={{movie_data['movie_poster']}} id="movie_poster" class="float-left"
-            alt="{{movie_data[" movie_title" ]}}" width="222px" height="333px">
+            alt="{{movie_data[" movie_title" ]}}" width="238px" height="357px">
         </div>
         <div class="col-9">
+
+          <div class="d-flex flex-row col-12 justify-content-start mb-1 title">
+            {{movie_data["movie_title"]}} ({{movie_data["movie_year"]}})
+          </div>
           <div class="d-flex flex-row col-12">
             <div class="alert grade_color_box col-3 center" data-color="{{movie_data["movie_score"]}}">
               {{movie_data["movie_score"]}}
@@ -56,8 +60,7 @@
               <span>{{movie_data["movie_genre"]}}</span><br />
               <span>{{movie_data["movie_runtime"]}} minutes</span>
             </div>
-            <div class="col-6 pr-0 d-flex justify-content-end mt-1 title">{{movie_data["movie_title"]}}
-              ({{movie_data["movie_year"]}})</div>
+            <div class="col-6 pr-0 "></div>
           </div>
 
           <div class="col-12 d-flex justify-content-end align-items-start
@@ -106,7 +109,7 @@
 
         <div class="row ml-1 mr-1 mb-5 ">
           <!-- <h5 class="ml-3 mt-4">Similar Titles: </h5> -->
-          <div class="row ml-1 mr-1 mt-5 justify-content-center">
+          <div class="row ml-1 mr-1 mt-5">
 
             {% for y in range(0,x)%}
             <div class="col-sm-2">
@@ -114,7 +117,7 @@
                 <div class="card-block">
 
                   <img class="card-img-top" src="{{movie_data["movie_sim_movies"][y].get("poster")}}"
-                    alt="{{movie_data["movie_sim_movies"][y].get("name")}}" height="205px">
+                    alt="{{movie_data["movie_sim_movies"][y].get("name")}}" height="205px" width="307.5">
 
                   <div class="card-img-overlay">
 
@@ -146,9 +149,9 @@
         var c = content.substr(0, showChar);
         var h = content.substr(showChar - 1, content.length - showChar);
 
-        var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent">
-          < span > ' + h + '</span> & nbsp;& nbsp; <a href="" class="morelink">' + moretext +
-                '</a></span > ';
+        var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent">'
+          + '<span> ' + h + '</span>  &nbsp;&nbsp; <a href="" class="morelink">' + moretext +
+          '</a></span>';
 
         $(this).html(html);
       }
@@ -187,6 +190,22 @@
 
   datasets: [
     {
+      label: 'Current Movie',
+      type: 'line',
+      fill: false,
+      data: movie_bb_arr,
+
+      pointRadius: 0,
+
+      backgroundColor: [
+        '#38AEE6',
+      ],
+
+      borderColor: [
+        '#38AEE6'
+      ],
+    },
+    {
       label: 'Genre Average',
       type: 'line',
       fill: false,
@@ -221,22 +240,7 @@
         '#e64230'
       ],
     },
-    {
-      label: 'Current Movie',
-      type: 'line',
-      fill: false,
-      data: movie_bb_arr,
 
-      pointRadius: 0,
-
-      backgroundColor: [
-        '#38AEE6',
-      ],
-
-      borderColor: [
-        '#38AEE6'
-      ],
-    }
   ],
       },
 

@@ -24,6 +24,7 @@ body {
     border-radius: 0px;
     padding: .45rem .65rem;
     max-width: 250px;
+    margin-top: 10px;
 }
 
 .center {
@@ -38,7 +39,7 @@ body {
 }
 
 .title {
-    font-size: 1.75em;
+    font-size: 1.54em;
     font-weight: bold;
     color: #293845;    
 }
