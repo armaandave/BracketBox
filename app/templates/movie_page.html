@@ -54,11 +54,13 @@
             <div class="alert grade_color_box col-3 center" data-color="{{movie_data["movie_score"]}}">
               {{movie_data["movie_score"]}}
             </div>
+            <div class="alert imdb_color_box col-1 ml-3" data-color="{{movie_data["movie_score"]}}">
+              {{movie_data["movie_imdb_score"]}}
+            </div>
 
-            <div class="col-3 mt-1 rating">
+            <div class="col-3 mt-3 rating">
               <span>Rated {{movie_data["movie_mpaa_rating"]}}</span><br />
               <span>{{movie_data["movie_genre"]}}</span><br />
-              <span>{{movie_data["movie_runtime"]}} minutes</span>
             </div>
             <div class="col-6 pr-0 "></div>
           </div>

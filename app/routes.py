@@ -87,7 +87,8 @@ def movie_page(movie_data):
         'movie_genre': (movie_info["genre"].values[0]),
         'movie_pscore': (movie_info["bb_profit_score"].values[0]),
         'movie_mscore': (movie_info["bb_profit_multiple_score"].values[0]),
-        'movie_sim_movies': (ast.literal_eval(movie_info["similar_movies"].values[0]))
+        'movie_sim_movies': (ast.literal_eval(movie_info["similar_movies"].values[0])),
+        'movie_imdb_score': (movie_info["imdb_score"].values[0])
     }
 
     x = len(ast.literal_eval(movie_info["similar_movies"].values[0]))
