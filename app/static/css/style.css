@@ -8,6 +8,7 @@ body {
     min-height: 100vh;
     padding-top: 5%;
     height: 100%;
+    width: 75%;
 }
 
 .main_div  {
@@ -17,13 +18,13 @@ body {
 .grade_color_box {   
 
     color: #293845;
-    font-size: 1.8em;
+    font-size: 2.0em;
     font-weight: bold;
     background-color: #90bcb3;
     border-color: #207868;
     border-radius: 0px;
     padding: .45rem .65rem;
-    max-width: 250px;
+    max-width: 170px;
     margin-top: 10px;
 }
 
@@ -192,7 +193,7 @@ a.morelink {
   .imdb_color_box {   
 
     color: #293845;
-    font-size: 1.7em;
+    font-size: 1.5em;
     font-weight: lighter;
     background-color: rgba(245, 223, 80, 0.913);
     border-color: rgb(225, 197, 17);
@@ -200,4 +201,15 @@ a.morelink {
     padding: .45rem .65rem;
     max-width: 250px;
     margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.imdb_text {
+
+    font-size: .38em;
+    text-align: center;
+
 }

@@ -35,7 +35,7 @@
       </li>
     </ul>
   </nav>
-  <div class="container-fluid parent_div w-75">
+  <div class="container-fluid parent_div">
 
 
     <div class="container">
@@ -54,12 +54,13 @@
             <div class="alert grade_color_box col-3 center" data-color="{{movie_data["movie_score"]}}">
               {{movie_data["movie_score"]}}
             </div>
-            <div class="alert imdb_color_box col-1 ml-3">
-              {{movie_data["movie_imdb_score"]}}
+            <div class="alert imdb_color_box col-1 ml-3 justify-content-center">
+              <span>{{movie_data["movie_imdb_score"]}}</span>
+              <span class="imdb_text">IMDb</span>
             </div>
 
-            <div class="col-3 mt-3 rating">
-              <span>Rated {{movie_data["movie_mpaa_rating"]}}</span><br />
+            <div class="col-3 mt-4 rating">
+              <span>{{movie_data["movie_mpaa_rating"]}}</span><br />
               <span>{{movie_data["movie_genre"]}}</span><br />
             </div>
             <div class="col-6 pr-0 "></div>
@@ -97,7 +98,7 @@
         </div>
 
       </div>
-      <div class="d-flex row col-12 mt-3">
+      <div class="d-flex row col-12 mt-2">
 
         <div class="comment more">
           {{movie_data["movie_synopsis"]}}
@@ -110,9 +111,9 @@
         </div>
 
         <div class="row ml-1 mr-1 mb-5 ">
-          <!-- <h5 class="ml-3 mt-4">Similar Titles: </h5> -->
-          <div class="row ml-1 mr-1 mt-5">
+          <h5 class="ml-3 mt-5">Similar Titles: </h5>
 
+          <div class="row ml-1 mr-1">
             {% for y in range(0,x)%}
             <div class="col-sm-2">
               <a href="/movie_page/{{movie_data["movie_sim_movies"][y].get("link")}}">
