@@ -35,6 +35,7 @@ def index():
     weekly_dict = {
         "movie_name": weekly_table["name"].values
     }
+    y = len(weekly_dict["movie_name"])
     master_table.sort_values(by='worldwide_box_office',
                              ascending=False, inplace=True)
     x = 6
@@ -45,7 +46,7 @@ def index():
         'movie_title': top_4["name"].values
     }
 
-    return render_template('index.html', movie_dict=movie_dict, weekly_dict=weekly_dict, yearly_dict=yearly_dict, x=x, popular_poster_list=popular_poster_list, popular_title_list=popular_title_list)
+    return render_template('index.html', movie_dict=movie_dict, weekly_dict=weekly_dict, yearly_dict=yearly_dict, x=x, popular_poster_list=popular_poster_list, popular_title_list=popular_title_list, y=y)
 
 
 @app.route('/movie_list')
@@ -88,7 +89,11 @@ def movie_page(movie_data):
         'movie_pscore': (movie_info["bb_profit_score"].values[0]),
         'movie_mscore': (movie_info["bb_profit_multiple_score"].values[0]),
         'movie_sim_movies': (ast.literal_eval(movie_info["similar_movies"].values[0])),
-        'movie_imdb_score': (movie_info["imdb_score"].values[0])
+        'movie_imdb_score': (movie_info["imdb_score"].values[0]),
+        'movie_meta_score': (round(movie_info["meta_score"].values[0])),
+        'movie_imdb_id': (movie_info["tconst"]).values[0],
+        'movie_slug_name': (movie_info["name_slug"].values[0])
+
     }
 
     x = len(ast.literal_eval(movie_info["similar_movies"].values[0]))

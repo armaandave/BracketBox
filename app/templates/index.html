@@ -49,7 +49,8 @@
     </ul>
   </nav>
 
-  <div class="container-fluid parent_div">
+  <div class="container-fluid parent_div pt-0">
+    <!--     <h3 class="ml-3">Popular Movies:</h3>
     <div class="row ml-1 mr-1 ">
       {% for y in range(0,x)%}
       <div class="col-sm-2">
@@ -65,10 +66,10 @@
         </div>
       </div>
       {% endfor %}
-    </div>
+    </div> -->
     <div class="d-flex col-12">
-      <div class="col-6 mr-2 pl-0">
-        <table class="w-100">
+      <div class="mr-2 pl-0">
+        <table class="index_table">
 
           <caption>Weekly leaders (by gross)</caption>
           <thead>
@@ -78,7 +79,7 @@
             </tr>
           </thead>
           <tbody>
-            {% for y in range(0,3)%}
+            {% for y in range(0,5)%}
             <tr>
               <th scope="row">{{y+1}}</th>
               <td>{{weekly_dict["movie_name"][y]}}</td>
@@ -87,9 +88,9 @@
           </tbody>
         </table>
       </div>
-      <div class="col-6 ml-2">
-        <table class="w-100">
-          <caption>2020 leaders (by gross)</caption>
+      <div class="ml-1">
+        <table class="index_table">
+          <caption>2020 Worldwide leaders (by gross)</caption>
           <thead>
             <tr>
               <th scope="col">Rank</th>
@@ -97,7 +98,7 @@
             </tr>
           </thead>
           <tbody>
-            {% for y in range(0,3)%}
+            {% for y in range(0,5)%}
             <tr>
               <th scope="row">{{y+1}}</th>
               <td>{{yearly_dict["movie_name"][y]}}</td>
@@ -118,7 +119,7 @@
           </tr>
         </thead>
         <tbody>
-          {% for y in range(0,3)%}
+          {% for y in range(0,5)%}
           <tr>
             <th scope="row">{{y+1}}</th>
             <td>{{movie_dict["movie_title"][y]}}</td>

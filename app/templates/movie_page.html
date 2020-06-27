@@ -52,11 +52,24 @@
           </div>
           <div class="d-flex flex-row col-12">
             <div class="alert grade_color_box col-3 center" data-color="{{movie_data["movie_score"]}}">
-              {{movie_data["movie_score"]}}
+              <a href="/about_us">
+                <span class="imdb_score_text">{{movie_data["movie_score"]}}</span>
+              </a>
             </div>
+
             <div class="alert imdb_color_box col-1 ml-3 justify-content-center">
-              <span>{{movie_data["movie_imdb_score"]}}</span>
+              <a href="https://www.imdb.com/title/{{movie_data["movie_imdb_id"]}}/">
+                <span class="imdb_score_text">{{movie_data["movie_imdb_score"]}}</span>
+              </a>
               <span class="imdb_text">IMDb</span>
+
+            </div>
+
+            <div class="alert rotten_color_box col-1 ml-3 justify-content-center">
+              <a href="https://www.metacritic.com/movie/{{movie_data["movie_slug_name"]}}">
+                <span class="imdb_score_text">{{movie_data["movie_meta_score"]}}</span>
+              </a>
+              <span class="imdb_text">Metascore</span>
             </div>
 
             <div class="col-3 mt-4 rating">

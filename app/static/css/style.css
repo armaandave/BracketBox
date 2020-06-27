@@ -6,7 +6,7 @@ body {
 .parent_div {
     background-color: whitesmoke;
     min-height: 100vh;
-    padding-top: 5%;
+    padding-top: 4%;
     height: 100%;
     width: 75%;
 }
@@ -26,6 +26,7 @@ body {
     padding: .45rem .65rem;
     max-width: 170px;
     margin-top: 10px;
+    font-family: "Varela";
 }
 
 .center {
@@ -43,6 +44,7 @@ body {
     font-size: 1.54em;
     font-weight: bold;
     color: #293845;    
+    font-family: "Varela";
 }
 
 .table_movie_dataset {
@@ -172,7 +174,7 @@ a.morelink {
     border-color: red;
 }
 .orange {
-    background-color: rgba(240, 176, 15, 0.666);
+    background-color: rgba(240, 195, 15, 0.728);
     border-color: #987220;
 }
 .green {
@@ -196,13 +198,15 @@ a.morelink {
     font-size: 1.5em;
     font-weight: lighter;
     background-color: rgba(245, 223, 80, 0.913);
-    border-color: rgb(225, 197, 17);
+    border-color: rgb(218, 189, 3);
     border-radius: 0px;
     padding: .45rem .65rem;
-    max-width: 250px;
+    max-width: 200px;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
+    color: black;
+    font-family: "Varela";
 }
 
 
@@ -211,5 +215,32 @@ a.morelink {
 
     font-size: .38em;
     text-align: center;
+
+}
+
+.rotten_color_box {   
+
+    color: #293845;
+    font-size: 1.5em;
+    font-weight: lighter;
+    background-color: rgba(102, 204, 51, 0.824);
+    border-color: rgb(1, 177, 7);
+    border-radius: 0px;
+    padding: .45rem .65rem;
+    max-width: 250px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    font-family: "Varela";
+}
+
+.imdb_score_text {
+
+    color: black;
+}
+
+.index_table {
+
+    width: 500px;
 
 }
