@@ -57,11 +57,11 @@
                     <div class="col first-col">
                         <h1 class="mb-4 index_header">Comprehensive Box Office Data</h1>
                         <h4>
-                            Any Possible Movie Information you Could Need all in One Place
+                            Any possible movie information you could need all in one place
                         </p>
                         <div class="index_button">
                             <button type="button" class="btn btn-outline-dark btn-lg">See Whats Trending</button>
-                            <button type="button" class="btn btn-outline-dark btn-lg">Search any Movies</button>
+                            <button type="button" class="btn btn-outline-dark btn-lg">Search for Movies</button>
                         </div>
                     </div>
                     <div class="col second-col">
@@ -69,26 +69,26 @@
                             <div class="col first-col-inner border-right">
                                 <div class="d-flex flex-grid">
                                     <div class="col first-col-inner center index_title">
-                                        <h4>Avatar</h4>
+                                        <h4>{{demo_dict["movie_name"][w]}}</h4>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-grid">
                                     <div class="col first-col-inner">
                                         <div class="alert grade_color_box col center">
-                                            <span class="imdb_score_text"> 80</span>
+                                            <span class="imdb_score_text"> {{demo_dict["movie_score"][w]}}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-grid">
                                     <div class="col first-col-inner">
                                         <div class="alert imdb_color_box col justify-content-center">
-                                            <span class="imdb_score_text">90</span>
+                                            <span class="imdb_score_text">{{demo_dict["movie_imdb"][w]}}</span>
                                             <span class="imdb_text">IMDb</span>
                                         </div>
                                     </div>
                                     <div class="col first-col-inner">
                                         <div class="alert imdb_color_box col justify-content-center">
-                                            <span class="imdb_score_text">90</span>
+                                            <span class="imdb_score_text">{{demo_dict["movie_meta"][w]}}</span>
                                             <span class="imdb_text">IMDb</span>
                                         </div>
                                     </div>
@@ -146,14 +146,14 @@
             </div>
             <div class="lower_fold d-flex flex-grid center justify-content-center  ">
                 {% for y in range(0,6)%}
-                <div class="col mt-5">
+                <div class="col pop_poster_index">
                     <div class="card-block">
                         <img
-                            class=""
+                            class="index_posters"
                             src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{popular_poster_list[y]}}"
                             alt="Card image"
-                            width="150px"
-                            height="225px"
+                            width="190px"
+                            height="285px"
                         >
                     </div>
                 </div>

@@ -4,6 +4,7 @@ import pandas as pd
 from datetime import date
 from flask import json
 import ast
+import random
 
 
 current_year = date.today().year
@@ -20,6 +21,7 @@ popular_movies_table = pd.read_csv(
     'mdata/final_result/trending/popular_movies.csv')
 popular_tv_table = pd.read_csv(
     'mdata/final_result/trending/popular_tv.csv')
+demo_table = pd.read_csv('mdata/final_result/demo_table.csv')
 
 
 @app.route('/')
@@ -27,6 +29,16 @@ def index():
 
     popular_title_list = popular_movies_table["title"]
     popular_poster_list = popular_movies_table["poster_path"]
+
+    demo_dict = {
+        "movie_name": demo_table["name"].values,
+        "movie_imdb": demo_table["imdb_score"].values,
+        "movie_meta": demo_table["meta_score"].values,
+        "movie_score": demo_table["bb_score"].values
+    }
+
+    w = random.randint(0, len(demo_table)-1)
+    print(w)
 
     yearly_dict = {
         "movie_name": yearly_table["name"].values
@@ -46,7 +58,7 @@ def index():
         'movie_title': top_4["name"].values
     }
 
-    return render_template('index.html', movie_dict=movie_dict, weekly_dict=weekly_dict, yearly_dict=yearly_dict, x=x, popular_poster_list=popular_poster_list, popular_title_list=popular_title_list, y=y)
+    return render_template('index.html', movie_dict=movie_dict, weekly_dict=weekly_dict, yearly_dict=yearly_dict, x=x, popular_poster_list=popular_poster_list, popular_title_list=popular_title_list, y=y, demo_dict=demo_dict, w=w)
 
 
 @app.route('/movie_list')

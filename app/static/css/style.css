@@ -371,9 +371,9 @@ font-style: italic;
 
 .lower_fold {
 
-    background-color: #D6F3FE;
+    background-color: #517496;
     margin: 0%;
-    height: 20rem;
+    height: 30rem;
 
 }
 
@@ -381,5 +381,15 @@ font-style: italic;
 
     padding-left: 5rem;
     padding-right: 5rem;
+
+}
+
+.index_posters {
+    border-radius: 5%;
+}
+
+.pop_poster_index {
+
+    margin-top: 90px;
 
 }
