@@ -1,72 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <title>All Movies</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',
+    <head>
+        <title>All Movies</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',
       filename='css/style.css') }}">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css"
-    integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8=" crossorigin="anonymous">
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-flex
-      justify-content-center">
-    <!-- Brand/logo -->
-    <a class="navbar-brand" href="{{ url_for('index') }}">Bracket Box</a>
-    <!-- Links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('movie_list') }}"> All Movies</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/trending">Trending</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/about_us">About us</a>
-      </li>
-    </ul>
-  </nav>
-  <div class="container-fluid parent_div">
-
-    <div class="col-1"></div>
-
-    <ul class="col-9 ml-5 list-group">
-      <header>
-        <div class=mb-1 id="search-box"></div>
-      </header>
-      <main>
-        <div id="hits"></div>
-        <div id="pagination"></div>
-      </main>
-      <!--       {% for x in range(0, num_movies)%}
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css"
+            integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8="
+            crossorigin="anonymous"
+        >
+    </head>
+    <body>
+        <div class="container-fluid parent_div">
+            <div class="main_div mb-5">
+                <nav class="navbar navbar-expand-sm navbar-light d-flex justify-content-left bb_nav">
+                    <!-- Brand/logo -->
+                    <a class="navbar-brand" href="{{ url_for('index') }}">
+                        <img
+                            width="70"
+                            height="70"
+                            class="d-inline-block"
+                            src="{{ url_for('static',
+                        filename='img/isolated-monochrome-black.svg') }}"
+                            alt=""
+                        >
+                        Bracket Box
+                    </a>
+                    <!-- Links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item bb_nav_item">
+                            <a class="nav-link bb_nav_item" href="/movie_list"> All Movies</a>
+                        </li>
+                        <li class="nav-item bb_nav_item">
+                            <a class="nav-link bb_nav_item" href="/trending">Trending</a>
+                        </li>
+                        <li class="nav-item bb_nav_item">
+                            <a class="nav-link bb_nav_item" href="/about_us">About us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <ul class="list-group pl-3">
+                    <header>
+                        <div class="mb-1" id="search-box"></div>
+                    </header>
+                    <main>
+                        <div id="hits"></div>
+                        <div id="pagination"></div>
+                    </main>
+                    <!--       {% for x in range(0, num_movies)%}
       {% set url = "/movie_page/{}^{}".format(title_list[x], year_list[x]) %}
       <li class="list-group-item"> <a class="list_link" href="{{ url }}">
           {{title_list[x]}} ({{year_list[x]}}) </a> </li>
       {% endfor %} -->
-
-    </ul>
-
-  </div>
-  <script type="text/html" id="hit-template">
-
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.0.0/dist/algoliasearch-lite.umd.js"
-    integrity="sha256-MfeKq2Aw9VAkaE9Caes2NOxQf6vUa8Av0JqcUXUGkd0=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js"
-    integrity="sha256-6S7q0JJs/Kx4kb/fv0oMjS855QTz5Rc2hh9AkIUjUsk=" crossorigin="anonymous"></script>
-  <script src="app.js"></script>
-</body>
-
-<script>
+                </ul>
+            </div>
+        </div>
+        <script type="text/html" id="hit-template"></script>
+        <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.0.0/dist/algoliasearch-lite.umd.js" integrity="sha256-MfeKq2Aw9VAkaE9Caes2NOxQf6vUa8Av0JqcUXUGkd0=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js" integrity="sha256-6S7q0JJs/Kx4kb/fv0oMjS855QTz5Rc2hh9AkIUjUsk=" crossorigin="anonymous"></script>
+        <script src="app.js"></script>
+    </body>
+    <script>
   const searchClient = algoliasearch(
     '8IL4QFC501',
     '211428c7d6f5720eb697b887c89d6b75' // search only API key, not admin API key
@@ -135,12 +137,9 @@
   }).then(() => {
     // done
   });
-
-
-</script>
-
-<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script>
+    </script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
   $(function () {
     $('a').each(function () {
       if ($(this).prop('href') == window.location.href) {
@@ -148,6 +147,5 @@
       }
     });
   });
-</script>
-
+    </script>
 </html>

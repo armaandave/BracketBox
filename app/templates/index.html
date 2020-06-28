@@ -20,6 +20,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
         <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
         <script src="https://kit.fontawesome.com/fe6d6e0194.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static',
       filename='css/style.css') }}">
@@ -60,8 +61,8 @@
                             Any possible movie information you could need all in one place
                         </p>
                         <div class="index_button">
-                            <button type="button" class="btn btn-outline-dark btn-lg">See Whats Trending</button>
-                            <button type="button" class="btn btn-outline-dark btn-lg">Search for Movies</button>
+                            <a href="/trending" role="button" class="btn btn-outline-dark btn-lg">See Whats Trending</a>
+                            <a href="/movie_list" role="button" class="btn btn-outline-dark btn-lg">Search for Movies</a>
                         </div>
                     </div>
                     <div class="col second-col">
@@ -95,7 +96,33 @@
                                 </div>
                             </div>
                             <div class="col second-col-inner">
-                                Chart
+                                <h4 class="metric_label">
+                                    Metrics:
+                                </h3>
+                                <table class="demo_table mt-3">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Opening Weekend:</th>
+                                            <td>{{demo_dict["opening_weekend"][w]}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Domestic Gross:</th>
+                                            <td>{{demo_dict["d_office"][w]}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">International Gross:</th>
+                                            <td>{{demo_dict["i_office"][w]}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Worldwide Gross:</th>
+                                            <td>{{demo_dict["w_office"][w]}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Budget:</th>
+                                            <td>{{demo_dict["budget"][w]}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

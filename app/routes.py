@@ -34,7 +34,12 @@ def index():
         "movie_name": demo_table["name"].values,
         "movie_imdb": demo_table["imdb_score"].values,
         "movie_meta": demo_table["meta_score"].values,
-        "movie_score": demo_table["bb_score"].values
+        "movie_score": demo_table["bb_score"].values,
+        "d_office": demo_table["domestic_box_office"].values,
+        "w_office": demo_table["worldwide_box_office"].values,
+        "i_office": demo_table["international_box_office"].values,
+        "opening_weekend": demo_table["opening_weekend"].values,
+        "budget": demo_table["budget"].values
     }
 
     w = random.randint(0, len(demo_table)-1)
@@ -102,9 +107,12 @@ def movie_page(movie_data):
         'movie_mscore': (movie_info["bb_profit_multiple_score"].values[0]),
         'movie_sim_movies': (ast.literal_eval(movie_info["similar_movies"].values[0])),
         'movie_imdb_score': (movie_info["imdb_score"].values[0]),
-        'movie_meta_score': (round(movie_info["meta_score"].values[0])),
+        'movie_meta_score': int(round(movie_info["meta_score"].values[0])),
         'movie_imdb_id': (movie_info["tconst"]).values[0],
-        'movie_slug_name': (movie_info["name_slug"].values[0])
+        'movie_slug_name': (movie_info["name_slug"].values[0]),
+        'movie_domestic_share': int(movie_info["domestic_share"].values[0]),
+        'movie_international_share': int(movie_info["international_share"].values[0])
+
 
     }
 

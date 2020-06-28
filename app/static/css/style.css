@@ -277,7 +277,7 @@ width: 100% !important;
 .bb_nav {
 
     padding-bottom: 1em;
-    padding-top: .75em;
+    padding-top: .5em;
     font-size: larger   ;
     color: black;
 }
@@ -291,6 +291,7 @@ width: 100% !important;
 .flex-grid {
   display: flex;
   margin: 0px;
+  flex-wrap: wrap;
 }
 .flex-grid .first-col {
   display: flex;
@@ -364,7 +365,7 @@ font-style: italic;
 
 .bb_nav_item {
 
-    padding-left: 3rem ;
+    padding-left: 2rem ;
     color: black !important;
 
 }
@@ -373,7 +374,7 @@ font-style: italic;
 
     background-color: #517496;
     margin: 0%;
-    height: 30rem;
+    height: 25rem;
 
 }
 
@@ -390,6 +391,37 @@ font-style: italic;
 
 .pop_poster_index {
 
-    margin-top: 90px;
+    margin-top: 60px;
+
+}
+
+.metric_label {
+
+    font-style: italic;
+
+}
+
+.stats_div {
+
+    margin-left: 0em;
+    margin-right: 0em;
+    padding-left: 0em;
+    padding-right: 0em;
+
+}
+
+.main_poster {
+
+    border-radius: 2%;
+
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+body {
+  font-family: Roboto, sans-serif;
+}
+
+#chart {
 
 }

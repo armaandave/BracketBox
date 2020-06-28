@@ -1,11 +1,11 @@
-﻿name,imdb_score,meta_score,bb_score
-Frozen,7.4,75,60
-Avengers: Endgame,8.4,78,95
-Avatar,7.8,83,100
-Black Panther,7.3,88,61
-Jaws,8,87,42
-Titanic,7.8,75,85
-Jurassic World,7,59,69
-The Avengers,8,69,65
-Furious 7,7.1,67,66
-Incredibles 2,7.6,80,58
+﻿name,imdb_score,meta_score,bb_score,domestic_box_office,opening_weekend,worldwide_box_office,international_box_office,budget
+Frozen,7.4,75,60,$400m,$243m,$1.2b,$868m,$150m
+Avengers: Endgame,8.4,78,95,$858m,$357m,$2.7b,$1.9b,$400m
+Avatar,7.8,83,100,$760m ,$77m,$2.7b,$2.0b,$237m
+Black Panther,7.3,88,61,$700m,$202m,$1.34b,$646m,$200m
+Jaws,8,87,42,$260m,$7.7m,$470m,$210m,$12m
+Titanic,7.8,75,85,$659m,$28m,$2.2b,$1.54b,$200m
+Jurassic World,7,59,69,$652m,$208m,$1.6b,$1.0b,$215m
+The Avengers,8,69,65,$623m,$207m,$1.5b,$891m,$225m
+Furious 7,7.1,67,66,$353m,$147m,$1.5b,$1.1b,$190m
+Incredibles 2,7.6,80,58,$608m,$182m,$1.2b,$634m,$200m
