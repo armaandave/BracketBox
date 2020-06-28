@@ -1,140 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167281977-1"></script>
-  <script>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167281977-1"></script>
+        <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'UA-167281977-1');
-  </script>
-
-
-  <title>BracketBox</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',
+        </script>
+        <title>BracketBox</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+        <script src="https://kit.fontawesome.com/fe6d6e0194.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',
       filename='css/style.css') }}">
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-flex justify-content-center">
-    <!-- Brand/logo -->
-    <a class="navbar-brand" href="{{ url_for('index') }}"><span><img
-          src="{{ url_for('static', filename='templates/isolated-monochrome-black.svg') }}" alt=""></span>
-      Bracket Box</a>
-
-    <!-- Links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/movie_list"> All Movies</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/trending">Trending</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/about_us">About us</a>
-      </li>
-    </ul>
-  </nav>
-
-  <div class="container-fluid parent_div pt-0">
-    <!--     <h3 class="ml-3">Popular Movies:</h3>
-    <div class="row ml-1 mr-1 ">
-      {% for y in range(0,x)%}
-      <div class="col-sm-2">
-        <div class="card-block">
-          <img class="card-img-top" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{popular_poster_list[y]}}"
-            alt="Card image" height="220px">
-          <div class="card-img-overlay">
-            <span class="label label-default"></span>
-          </div>
-          <div class="home_title">
-            <a></a>
-          </div>
+    </head>
+    <body>
+        <div class="container-fluid parent_div">
+            <div class="main_div mb-5">
+                <nav class="navbar navbar-expand-sm navbar-light d-flex justify-content-left bb_nav">
+                    <!-- Brand/logo -->
+                    <a class="navbar-brand" href="{{ url_for('index') }}">
+                        <img
+                            width="70"
+                            height="70"
+                            class="d-inline-block"
+                            src="{{ url_for('static',
+                            filename='img/isolated-monochrome-black.svg') }}"
+                            alt=""
+                        >
+                        Bracket Box
+                    </a>
+                    <!-- Links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item bb_nav_item">
+                            <a class="nav-link bb_nav_item" href="/movie_list"> All Movies</a>
+                        </li>
+                        <li class="nav-item bb_nav_item">
+                            <a class="nav-link bb_nav_item" href="/trending">Trending</a>
+                        </li>
+                        <li class="nav-item bb_nav_item">
+                            <a class="nav-link bb_nav_item" href="/about_us">About us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="d-flex flex-grid mt-2">
+                    <div class="col first-col">
+                        <h1 class="mb-4 index_header">Comprehensive Box Office Data</h1>
+                        <h4>
+                            Any Possible Movie Information you Could Need all in One Place
+                        </p>
+                        <div class="index_button">
+                            <button type="button" class="btn btn-outline-dark btn-lg">See Whats Trending</button>
+                            <button type="button" class="btn btn-outline-dark btn-lg">Search any Movies</button>
+                        </div>
+                    </div>
+                    <div class="col second-col">
+                        <div class="d-flex flex-grid">
+                            <div class="col first-col-inner border-right">
+                                <div class="d-flex flex-grid">
+                                    <div class="col first-col-inner center index_title">
+                                        <h4>Avatar</h4>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-grid">
+                                    <div class="col first-col-inner">
+                                        <div class="alert grade_color_box col center">
+                                            <span class="imdb_score_text"> 80</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-grid">
+                                    <div class="col first-col-inner">
+                                        <div class="alert imdb_color_box col justify-content-center">
+                                            <span class="imdb_score_text">90</span>
+                                            <span class="imdb_text">IMDb</span>
+                                        </div>
+                                    </div>
+                                    <div class="col first-col-inner">
+                                        <div class="alert imdb_color_box col justify-content-center">
+                                            <span class="imdb_score_text">90</span>
+                                            <span class="imdb_text">IMDb</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col second-col-inner">
+                                Chart
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-3 px-5 d-flex flex-grid justify-content-center center mt-5 mb-5">
+                    <div class="col first-col-inner index_logo_border_right">
+                        <span class="index_logos">
+                            <i class="fas fa-book"></i>
+                        </span>
+                        <span class="font_label">
+                            Massive Library
+                            <br>
+                            of compiled data
+                        </span>
+                    </div>
+                    <div class="col first-col-inner index_logo_border_right">
+                        <span class="index_logos">
+                            <i class="fas fa-calculator"></i>
+                        </span>
+                        <span class="font_label">
+                            Custom and Detailed
+                            <br>
+                            Scoring
+                        </span>
+                    </div>
+                    <div class="col first-col-inner index_logo_border_right">
+                        <span class="index_logos">
+                            <i class="fas fa-chart-line"></i>
+                        </span>
+                        <span class="font_label">
+                            Innovative and
+                            <br>
+                            Comparative Charts
+                        </span>
+                    </div>
+                    <div class="col first-col-inner">
+                        <span class="index_logos">
+                            <i class="fas fa-not-equal"></i>
+                        </span>
+                        <span class="font_label">
+                            Intuitive Comparison
+                            <br>
+                            tool for media
+                        </span>
+                    </div>
+                </div>
+                <div class="row_border_bottom px-5"></div>
+            </div>
+            <div class="lower_fold d-flex flex-grid center justify-content-center  ">
+                {% for y in range(0,6)%}
+                <div class="col mt-5">
+                    <div class="card-block">
+                        <img
+                            class=""
+                            src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{popular_poster_list[y]}}"
+                            alt="Card image"
+                            width="150px"
+                            height="225px"
+                        >
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="d-flex flex-grid center ">
+                <div class="col">
+                    <table class="index_table">
+                        <caption>Weekly leaders (by gross)</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Rank</th>
+                                <th scope="col">Movie</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for y in range(0,5)%}
+                            <tr>
+                                <th scope="row">{{y+1}}</th>
+                                <td>{{weekly_dict["movie_name"][y]}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <table class="index_table">
+                        <caption>2020 Worldwide leaders (by gross)</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Rank</th>
+                                <th scope="col">Movie</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for y in range(0,5)%}
+                            <tr>
+                                <th scope="row">{{y+1}}</th>
+                                <td>{{yearly_dict["movie_name"][y]}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="d-flex flex-grid center">
+                <div class="col">
+                    <table class="table">
+                        <caption>All-time leaders (by gross)</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Rank</th>
+                                <th scope="col">Movie</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for y in range(0,5)%}
+                            <tr>
+                                <th scope="row">{{y+1}}</th>
+                                <td>{{movie_dict["movie_title"][y]}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-      </div>
-      {% endfor %}
-    </div> -->
-    <div class="d-flex col-12">
-      <div class="mr-2 pl-0">
-        <table class="index_table">
-
-          <caption>Weekly leaders (by gross)</caption>
-          <thead>
-            <tr>
-              <th scope="col">Rank</th>
-              <th scope="col">Movie</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for y in range(0,5)%}
-            <tr>
-              <th scope="row">{{y+1}}</th>
-              <td>{{weekly_dict["movie_name"][y]}}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-      <div class="ml-1">
-        <table class="index_table">
-          <caption>2020 Worldwide leaders (by gross)</caption>
-          <thead>
-            <tr>
-              <th scope="col">Rank</th>
-              <th scope="col">Movie</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for y in range(0,5)%}
-            <tr>
-              <th scope="row">{{y+1}}</th>
-              <td>{{yearly_dict["movie_name"][y]}}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
     </div>
-
-    <div class="col-12">
-      <table class="col-12">
-        <caption>All-time leaders (by gross)</caption>
-        <thead>
-          <tr>
-            <th scope="col">Rank</th>
-            <th scope="col">Movie</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for y in range(0,5)%}
-          <tr>
-            <th scope="row">{{y+1}}</th>
-            <td>{{movie_dict["movie_title"][y]}}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-
-
-  </div>
-  </div>
 </body>
 </body>
-
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
   $(function () {
@@ -145,5 +234,4 @@
     });
   });
 </script>
-
 </html>

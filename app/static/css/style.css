@@ -1,14 +1,14 @@
 body {
-    font-family: 'Varela';    
-    background-color: lightgrey !important;
+    font-family: SourceSansPro,sans-serif;
+    background-color: white !important;
+    -webkit-font-smoothing: antialiased;
 }
 
 .parent_div {
-    background-color: whitesmoke;
+    background-color: white;
     min-height: 100vh;
-    padding-top: 4%;
     height: 100%;
-    width: 75%;
+    padding: 0%;
 }
 
 .main_div  {
@@ -24,7 +24,7 @@ body {
     border-color: #207868;
     border-radius: 0px;
     padding: .45rem .65rem;
-    max-width: 170px;
+    /* max-width: 170px; */
     margin-top: 10px;
     font-family: "Varela";
 }
@@ -75,12 +75,12 @@ body {
 
 thead,
 tfoot {
-    background-color: rgba(9, 53, 77, 0.803);
-    color: #fff;
+    background-color: whitesmoke;
+    color: black;
 }
 
 tbody {
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 caption {
@@ -99,7 +99,7 @@ table {
 
 td,
 th {
-    border: 1px solid rgb(190, 190, 190);
+    border: 1px solid rgb(200, 200, 200);
     padding: 5px 10px;
 }
 
@@ -234,10 +234,152 @@ a.morelink {
 .imdb_score_text {
 
     color: black;
+    text-align: center;
 }
 
 .index_table {
 
     width: 500px;
+
+}
+
+.home_gutter {
+
+width: 100% !important;
+
+}
+
+.jumbotron {
+
+    color: black;
+    background-color: white;
+    height: 400px;
+    /* background-image: url("https://wallpaperaccess.com/full/2117032.jpg"); */
+    background-size: cover;
+    padding-top: 0px;
+
+}
+
+.jumbo_button {
+
+    fill: white;
+    border-width: 10px;
+    border: #4f81bd;
+}
+
+.index_divider {
+
+    stroke: #9EADBA;
+    stroke-width: 2.5px;
+
+}
+
+.bb_nav {
+
+    padding-bottom: 1em;
+    padding-top: .75em;
+    font-size: larger   ;
+    color: black;
+}
+
+.index_button {
+
+    padding-top: 1.75rem;
+
+}
+
+.flex-grid {
+  display: flex;
+  margin: 0px;
+}
+.flex-grid .first-col {
+  display: flex;
+  justify-content: top;
+  margin: 20px 20px 20px 0px;
+  flex-direction: column;
+
+}
+
+.flex-grid .second-col {
+    display: flex;
+    border: solid 2px #cddeed;
+    border-radius: 4px;
+    justify-content: center;
+    padding: 1em;
+    margin: 20px 20px 20px 0px;
+    flex-direction: column;
+  }
+
+  .flex-grid .first-col-inner {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .flex-grid .second-col-inner {
+      display: flex;
+      justify-content: center;
+      padding: 1em 1em;
+      margin-left: 1.25em;
+      flex-direction: column;
+    }
+
+.index_title {
+
+font-style: italic;
+
+}
+
+.index_header {
+
+    font-size: xxx-large;
+    font-weight: bold;
+
+
+}
+
+.index_logos {
+
+    font-size: 46px;
+    color: grey;
+
+}
+
+.font_label {
+
+    font-weight: bold;
+
+}
+
+.index_logo_border_right {
+    border-right: 3px solid #cddeed;
+}
+
+.row_border_bottom {
+    border-bottom: 3px solid #cddeed;
+    margin-left: 18%;
+    margin-right: 18%;
+}
+
+
+.bb_nav_item {
+
+    padding-left: 3rem ;
+    color: black !important;
+
+}
+
+.lower_fold {
+
+    background-color: #D6F3FE;
+    margin: 0%;
+    height: 20rem;
+
+}
+
+.main_div {
+
+    padding-left: 5rem;
+    padding-right: 5rem;
 
 }
