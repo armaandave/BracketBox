@@ -75,7 +75,7 @@ body {
 
 thead,
 tfoot {
-    background-color: whitesmoke;
+    background-color:rgb(233, 233, 233) ;
     color: black;
 }
 
@@ -204,6 +204,7 @@ a.morelink {
     flex-direction: column;
     color: black;
     font-family: "Varela";
+    text-align: center;
 }
 
 
@@ -229,6 +230,7 @@ a.morelink {
     display: flex;
     flex-direction: column;
     font-family: "Varela";
+    text-align: center;
 }
 
 .imdb_score_text {
@@ -239,7 +241,7 @@ a.morelink {
 
 .index_table {
 
-    width: 500px;
+    
 
 }
 
@@ -262,9 +264,8 @@ width: 100% !important;
 
 .jumbo_button {
 
-    fill: white;
-    border-width: 10px;
-    border: #4f81bd;
+    border-color: black;
+
 }
 
 .index_divider {
@@ -304,7 +305,7 @@ width: 100% !important;
 .flex-grid .second-col {
     display: flex;
     border: solid 2px #cddeed;
-    border-radius: 4px;
+    border-radius: 2%;
     justify-content: center;
     padding: 1em;
     margin: 20px 20px 20px 0px;
@@ -423,5 +424,20 @@ body {
 }
 
 #chart {
+
+}
+
+.all_movie_info {
+
+    border-radius: 2mm;
+    border: #90bcb3;
+
+}
+
+.trending_poster {
+
+    width: 200px;
+    height: 300px;
+    border-radius: 4%;
 
 }

@@ -1,62 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
-    <title>About Us</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',
+    <head>
+        <title>About Us</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',
       filename='css/style.css') }}">
-
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-flex
-      justify-content-center">
-        <!-- Brand/logo -->
-        <a class="navbar-brand" href="{{ url_for('index') }}">Bracket Box</a>
-
-        <!-- Links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('movie_list') }}"> All Movies</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/trending">Trending</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about_us">About us</a>
-            </li>
-        </ul>
-    </nav>
-
-    <div class="container-fluid parent_div">
-
-        <div class="col-1"></div>
-        <h3 class="ml-3">Who are we?</h3>
-        <h5 class="mt-2 mb-5 ml-3">Bracket Box is a website that specializes in box office data and creating metrics for
+    </head>
+    <body>
+        <div class="main_div mb-5">
+            <nav class="navbar navbar-expand-sm navbar-light d-flex justify-content-left bb_nav">
+                <!-- Brand/logo -->
+                <a class="navbar-brand" href="{{ url_for('index') }}">
+                    <img
+                        width="70"
+                        height="70"
+                        class="d-inline-block"
+                        src="{{ url_for('static',
+                    filename='img/isolated-monochrome-black.svg') }}"
+                        alt=""
+                    >
+                    Bracket Box
+                </a>
+                <!-- Links -->
+                <ul class="navbar-nav">
+                    <li class="nav-item bb_nav_item">
+                        <a class="nav-link bb_nav_item" href="/movie_list"> All Movies</a>
+                    </li>
+                    <li class="nav-item bb_nav_item">
+                        <a class="nav-link bb_nav_item" href="/trending">Trending</a>
+                    </li>
+                    <li class="nav-item bb_nav_item">
+                        <a class="nav-link bb_nav_item" href="/about_us">About us</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="container-fluid parent_div">
+                <div class="col-1"></div>
+                <h3 class="ml-3">Who are we?</h3>
+                <h5 class="mt-2 mb-5 ml-3">
+                    Bracket Box is a website that specializes in box office data and creating metrics for
             comparing
             and scoring
             movies. Along with standard box office statistics, we provide a custom score that takes into account risk
-            and reward of a movie and its production.</h5>
-        <h3 class="ml-3">What does our score signify?</h3>
-        <h5 class="ml-3">To calculate our score, we combine a variety of different factors to value both the risk
+            and reward of a movie and its production.
+                </h5>
+                <h3 class="ml-3">What does our score signify?</h3>
+                <h5 class="ml-3">
+                    To calculate our score, we combine a variety of different factors to value both the risk
             success of the
             performance of any particular at the box office. To calculate this, we collect vast amounts of data and use
-            statistical algorithims to produce an accurate score.</h5>
-
-    </div>
-
-</body>
-
-<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script>
+            statistical algorithims to produce an accurate score.
+                </h5>
+            </div>
+        </div>
+    </body>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
     $(function () {
         $('a').each(function () {
             if ($(this).prop('href') == window.location.href) {
@@ -64,6 +69,5 @@
             }
         });
     });
-</script>
-
+    </script>
 </html>

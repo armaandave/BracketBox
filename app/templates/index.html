@@ -61,8 +61,8 @@
                             Any possible movie information you could need all in one place
                         </p>
                         <div class="index_button">
-                            <a href="/trending" role="button" class="btn btn-outline-dark btn-lg">See Whats Trending</a>
-                            <a href="/movie_list" role="button" class="btn btn-outline-dark btn-lg">Search for Movies</a>
+                            <a href="/trending" role="button" class="btn btn-outline-dark btn-lg jumbo_button">See Whats Trending</a>
+                            <a href="/movie_list" role="button" class="btn btn-outline-dark btn-lg jumbo_button">Search for Movies</a>
                         </div>
                     </div>
                     <div class="col second-col">
@@ -88,9 +88,9 @@
                                         </div>
                                     </div>
                                     <div class="col first-col-inner">
-                                        <div class="alert imdb_color_box col justify-content-center">
+                                        <div class="alert rotten_color_box col justify-content-center">
                                             <span class="imdb_score_text">{{demo_dict["movie_meta"][w]}}</span>
-                                            <span class="imdb_text">IMDb</span>
+                                            <span class="imdb_text">Metascore</span>
                                         </div>
                                     </div>
                                 </div>
@@ -186,66 +186,58 @@
                 </div>
                 {% endfor %}
             </div>
-            <div class="d-flex flex-grid center ">
-                <div class="col">
-                    <table class="index_table">
-                        <caption>Weekly leaders (by gross)</caption>
-                        <thead>
-                            <tr>
-                                <th scope="col">Rank</th>
-                                <th scope="col">Movie</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for y in range(0,5)%}
-                            <tr>
-                                <th scope="row">{{y+1}}</th>
-                                <td>{{weekly_dict["movie_name"][y]}}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col">
-                    <table class="index_table">
-                        <caption>2020 Worldwide leaders (by gross)</caption>
-                        <thead>
-                            <tr>
-                                <th scope="col">Rank</th>
-                                <th scope="col">Movie</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for y in range(0,5)%}
-                            <tr>
-                                <th scope="row">{{y+1}}</th>
-                                <td>{{yearly_dict["movie_name"][y]}}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="d-flex flex-grid center">
-                <div class="col">
-                    <table class="table">
-                        <caption>All-time leaders (by gross)</caption>
-                        <thead>
-                            <tr>
-                                <th scope="col">Rank</th>
-                                <th scope="col">Movie</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for y in range(0,5)%}
-                            <tr>
-                                <th scope="row">{{y+1}}</th>
-                                <td>{{movie_dict["movie_title"][y]}}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+            <div class="main_div mb-5">
+                <table class="table">
+                    <caption>Weekly leaders (by gross)</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Rank</th>
+                            <th scope="col">Movie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for y in range(0,5)%}
+                        <tr>
+                            <th scope="row">{{y+1}}</th>
+                            <td>{{weekly_dict["movie_name"][y]}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <table class="table">
+                    <caption>Yearly leaders (by gross)</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Rank</th>
+                            <th scope="col">Movie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for y in range(0,5)%}
+                        <tr>
+                            <th scope="row">{{y+1}}</th>
+                            <td>{{yearly_dict["movie_name"][y]}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <table class="table">
+                    <caption>All-time leaders (by gross)</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Rank</th>
+                            <th scope="col">Movie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for y in range(0,5)%}
+                        <tr>
+                            <th scope="row">{{y+1}}</th>
+                            <td>{{movie_dict["movie_title"][y]}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
