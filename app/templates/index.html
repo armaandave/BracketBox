@@ -50,6 +50,9 @@
                             <a class="nav-link bb_nav_item" href="/trending">Trending</a>
                         </li>
                         <li class="nav-item bb_nav_item">
+                            <a class="nav-link bb_nav_item" href="/charts">Charts</a>
+                        </li>
+                        <li class="nav-item bb_nav_item">
                             <a class="nav-link bb_nav_item" href="/about_us">About us</a>
                         </li>
                     </ul>
@@ -191,14 +194,14 @@
                     <caption>Weekly leaders (by gross)</caption>
                     <thead>
                         <tr>
-                            <th scope="col">Rank</th>
+                            <th scope="col" class="w-10">Rank</th>
                             <th scope="col">Movie</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for y in range(0,5)%}
                         <tr>
-                            <th scope="row">{{y+1}}</th>
+                            <th scope="row" class="w-10">{{y+1}}</th>
                             <td>{{weekly_dict["movie_name"][y]}}</td>
                         </tr>
                         {% endfor %}
@@ -208,14 +211,14 @@
                     <caption>Yearly leaders (by gross)</caption>
                     <thead>
                         <tr>
-                            <th scope="col">Rank</th>
+                            <th scope="col" class="w-10">Rank</th>
                             <th scope="col">Movie</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for y in range(0,5)%}
                         <tr>
-                            <th scope="row">{{y+1}}</th>
+                            <th scope="row" class="w-10">{{y+1}}</th>
                             <td>{{yearly_dict["movie_name"][y]}}</td>
                         </tr>
                         {% endfor %}
@@ -225,14 +228,14 @@
                     <caption>All-time leaders (by gross)</caption>
                     <thead>
                         <tr>
-                            <th scope="col">Rank</th>
+                            <th scope="col" class="w-10">Rank</th>
                             <th scope="col">Movie</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for y in range(0,5)%}
                         <tr>
-                            <th scope="row">{{y+1}}</th>
+                            <th scope="row" class="w-10">{{y+1}}</th>
                             <td>{{movie_dict["movie_title"][y]}}</td>
                         </tr>
                         {% endfor %}

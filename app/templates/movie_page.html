@@ -44,6 +44,9 @@
                 <a class="nav-link bb_nav_item" href="/trending">Trending</a>
             </li>
             <li class="nav-item bb_nav_item">
+              <a class="nav-link bb_nav_item" href="/charts">Charts</a>
+          </li>
+            <li class="nav-item bb_nav_item">
                 <a class="nav-link bb_nav_item" href="/about_us">About us</a>
             </li>
         </ul>
@@ -68,7 +71,7 @@
             </div>
 
             <div class="alert imdb_color_box col-1 ml-3 justify-content-center">
-              <a href="https://www.imdb.com/title/{{movie_data["movie_imdb_id"]}}/">
+              <a href="https://imdb.com/title/{{movie_data["movie_imdb_id"]}}">
                 <span class="imdb_score_text">{{movie_data["movie_imdb_score"]}}</span>
               </a>
               <span class="imdb_text">IMDb</span>
@@ -77,7 +80,7 @@
 
             <div class="alert rotten_color_box col-1 ml-3 justify-content-center">
               <a href="https://www.metacritic.com/movie/{{movie_data["movie_slug_name"]}}">
-                <span class="imdb_score_text">{{movie_data["movie_meta_score"]}}</span>
+                <span class="imdb_score_text"><!-- {{movie_data["movie_meta_score"]}} --></span>
               </a>
               <span class="imdb_text">Metascore</span>
             </div>

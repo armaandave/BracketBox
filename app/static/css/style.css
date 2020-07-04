@@ -1,5 +1,5 @@
 body {
-    font-family: SourceSansPro,sans-serif;
+    font-family: SourceSansPro, sans-serif ;
     background-color: white !important;
     -webkit-font-smoothing: antialiased;
 }
@@ -125,11 +125,6 @@ caption{
 
 }
 
-.chartjs{
-
-    
-
-}
 
 .score_meaning {
 
@@ -239,11 +234,6 @@ a.morelink {
     text-align: center;
 }
 
-.index_table {
-
-    
-
-}
 
 .home_gutter {
 
@@ -334,8 +324,9 @@ font-style: italic;
 
 .index_header {
 
-    font-size: xxx-large;
-    font-weight: bold;
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 62px;
 
 
 }
@@ -419,13 +410,8 @@ font-style: italic;
 
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
-body {
-  font-family: Roboto, sans-serif;
-}
 
-#chart {
 
-}
 
 .all_movie_info {
 
@@ -439,5 +425,26 @@ body {
     width: 200px;
     height: 300px;
     border-radius: 4%;
+
+}
+
+.w-10 {
+    width: 10%;
+}
+
+@font-face {
+    font-family: SourceSansPro;
+    src: url(Source_Sans_Pro/SourceSansPro-Regular.ttf);
+  }
+
+  .charts_header {
+
+    color: black;
+
+  }
+
+.charts_list_item {
+
+    color: black;
 
 }

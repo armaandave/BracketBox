@@ -1,51 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167281977-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  <title>Movie List</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="style.css">
-
+        gtag('config', 'UA-167281977-1');
+    </script>
+    <title>BracketBox</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+    <script src="https://kit.fontawesome.com/fe6d6e0194.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',
+      filename='css/style.css') }}">
 </head>
+
 <body>
+    <div class="container-fluid parent_div">
+        <div class="main_div mb-5">
+            <nav class="navbar navbar-expand-sm navbar-light d-flex justify-content-left bb_nav">
+                <!-- Brand/logo -->
+                <a class="navbar-brand" href="{{ url_for('index') }}">
+                    <img width="70" height="70" class="d-inline-block" src="{{ url_for('static',
+                            filename='img/isolated-monochrome-black.svg') }}" alt="">
+                    Bracket Box
+                </a>
+                <!-- Links -->
+                <ul class="navbar-nav">
+                    <li class="nav-item bb_nav_item">
+                        <a class="nav-link bb_nav_item" href="/movie_list"> All Movies</a>
+                    </li>
+                    <li class="nav-item bb_nav_item">
+                        <a class="nav-link bb_nav_item" href="/trending">Trending</a>
+                    </li>
+                    <li class="nav-item bb_nav_item">
+                        <a class="nav-link bb_nav_item" href="/charts">Charts</a>
+                    </li>
+                    <li class="nav-item bb_nav_item">
+                        <a class="nav-link bb_nav_item" href="/about_us">About us</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="main_div mb-5">
+                <a href="/charts/domestic_charts ">
+                    <h4 class="charts_header">All Time Domestic</h4>
+                </a>
+                <table class="table mt-1">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="w-10">Rank</th>
+                            <th scope="col">Movie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for y in range(0,5)%}
+                        <tr>
+                            <th scope="row" class="w-10">{{y+1}}</th>
+                            <td><a class="charts_list_item"
+                                    href="/movie_page/{{domestic_dict['movie_name'][y]}}^{{domestic_dict['movie_year'][y]}}">{{domestic_dict["movie_name"][y]}}
+                                    ({{domestic_dict["movie_year"][y]}}) -
+                                    ${{domestic_dict["movie_d_box"][y]}}
+                                </a></td>
 
-
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <!-- Brand/logo -->
-        <a class="navbar-brand" href="index.html">Bracket Box</a>
-        
-        <!-- Links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-            <a class="nav-link" href="movie_list.html"> All Movies</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Charts</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Best and Worsts</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="about_us.html">About us</a>
-            </li>
-        </ul>
-        </nav>
-
-
-<div class="jumbotron text-center">
-        <h1>All Movies List</h1>
-        <p>The complete list of movies in out database</p> 
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="/charts/domestic_charts_adjusted">
+                    <h4 class="pt-4 charts_header">
+                        All Time Domestic (adjusted for inflation)
+                    </h4>
+                </a>
+                <table class="table mt-1">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="w-10">Rank</th>
+                            <th scope="col">Movie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for y in range(0,5)%}
+                        <tr>
+                            <th scope="row" class="w-10">{{y+1}}</th>
+                            <td class="charts_list_item"><a class="charts_list_item"
+                                    href="/movie_page/{{adjusted_domestic_dict['movie_name'][y]}}^{{adjusted_domestic_dict['movie_year'][y]}}">{{adjusted_domestic_dict["movie_name"][y]}}
+                                    ({{adjusted_domestic_dict["movie_year"][y]}}) -
+                                    ${{adjusted_domestic_dict["movie_d_box"][y]}}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="/charts/domestic_charts_animated">
+                    <h4 class="pt-4 charts_header">All Time Domestic (animated)</h4>
+                </a>
+                <table class="table mt-1">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="w-10">Rank</th>
+                            <th scope="col">Movie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for y in range(0,5)%}
+                        <tr>
+                            <th scope="row" class="w-10">{{y+1}}</th>
+                            <td class="charts_list_item"><a class="charts_list_item"
+                                    href="/movie_page/{{animated_domestic_dict['movie_name'][y]}}^{{animated_domestic_dict['movie_year'][y]}}">{{animated_domestic_dict["movie_name"][y]}}
+                                    ({{animated_domestic_dict["movie_year"][y]}}) -
+                                    ${{animated_domestic_dict["movie_d_box"][y]}}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="/charts/international_charts">
+                    <h4 class="pt-4 charts_header">All Time International</h4>
+                </a>
+                <table class="table mt-1">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="w-10">Rank</th>
+                            <th scope="col">Movie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for y in range(0,5)%}
+                        <tr>
+                            <th scope="row" class="w-10">{{y+1}}</th>
+                            <td class="charts_list_item"> <a class="charts_list_item"
+                                    href="/movie_page/{{international_dict['movie_name'][y]}}^{{international_dict['movie_year'][y]}}">{{international_dict["movie_name"][y]}}
+                                    ({{international_dict["movie_year"][y]}}) -
+                                    ${{international_dict["movie_i_box"][y]}}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="/charts/international_charts_animated">
+                    <h4 class="pt-4 charts_header">All Time International (animated)</h4>
+                </a>
+                <table class="table mt-1">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="w-10">Rank</th>
+                            <th scope="col">Movie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for y in range(0,5)%}
+                        <tr>
+                            <th scope="row" class="w-10">{{y+1}}</th>
+                            <td class="charts_list_item"><a class="charts_list_item"
+                                    href="/movie_page/{{animated_international_dict['movie_name'][y]}}^{{animated_international_dict['movie_year'][y]}}">{{animated_international_dict["movie_name"][y]}}
+                                    ({{animated_international_dict["movie_year"][y]}}) -
+                                    ${{animated_international_dict["movie_i_box"][y]}}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="/charts/worldwide_charts">
+                    <h4 class="pt-4 charts_header">All Time Worldwide</h4>
+                </a>
+                <table class="table mt-1">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="w-10">Rank</th>
+                            <th scope="col">Movie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for y in range(0,5)%}
+                        <tr>
+                            <th scope="row" class="w-10">{{y+1}}</th>
+                            <td class="charts_list_item"><a class="charts_list_item"
+                                    href="/movie_page/{{worldwide_dict['movie_name'][y]}}^{{worldwide_dict['movie_year'][y]}}">{{worldwide_dict["movie_name"][y]}}
+                                    ({{worldwide_dict["movie_year"][y]}}) -
+                                    ${{worldwide_dict["movie_w_box"][y]}}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
+    </div>
+</body>
+</body>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+    $(function () {
+        $('a').each(function () {
+            if ($(this).prop('href') == window.location.href) {
+                $(this).addClass('active'); $(this).parents('li').addClass('active');
+            }
+        });
+    });
+</script>
 
-&nbsp;&nbsp; 
-
-<div class="list-group">
-        <a href="angry_birds_page.html" class="list-group-item list-group-item-action">Angry Birds Movie</a>
-        <a href="joker_page.html" class="list-group-item list-group-item-action">Joker</a>
-        <a href="#" class="list-group-item list-group-item-action">Inception</a>
-        </div>
+</html>

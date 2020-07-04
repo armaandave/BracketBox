@@ -22,6 +22,16 @@ popular_movies_table = pd.read_csv(
 popular_tv_table = pd.read_csv(
     'mdata/final_result/trending/popular_tv.csv')
 demo_table = pd.read_csv('mdata/final_result/demo_table.csv')
+all_time_adjusted_domestic = pd.read_csv(
+    'mdata/thenum/charts/all_time_adjusted_domestic.csv')
+all_time_animated_domestic = pd.read_csv(
+    'mdata/thenum/charts/all_time_animated_domestic.csv')
+all_time_animated_international = pd.read_csv(
+    'mdata/thenum/charts/all_time_animated_international.csv')
+all_time_domestic = pd.read_csv('mdata/thenum/charts/all_time_domestic.csv')
+all_time_international = pd.read_csv(
+    'mdata/thenum/charts/all_time_international.csv')
+all_time_worldwide = pd.read_csv('mdata/thenum/charts/all_time_worldwide.csv')
 
 
 @app.route('/')
@@ -107,7 +117,7 @@ def movie_page(movie_data):
         'movie_mscore': (movie_info["bb_profit_multiple_score"].values[0]),
         'movie_sim_movies': (ast.literal_eval(movie_info["similar_movies"].values[0])),
         'movie_imdb_score': (movie_info["imdb_score"].values[0]),
-        'movie_meta_score': int(round(movie_info["meta_score"].values[0])),
+        # 'movie_meta_score': int(round(movie_info["meta_score"].values[0])),
         'movie_imdb_id': (movie_info["tconst"]).values[0],
         'movie_slug_name': (movie_info["name_slug"].values[0]),
         'movie_domestic_share': int(movie_info["domestic_share"].values[0]),
@@ -143,10 +153,149 @@ def trending():
     return render_template('trending.html', current_title_list=current_title_list, current_poster_list=current_poster_list, upcoming_poster_list=upcoming_poster_list, upcoming_title_list=upcoming_title_list, popular_title_list=popular_title_list, popular_poster_list=popular_poster_list, popular_tv_list=popular_tv_list, popular_tv_poster_list=popular_tv_poster_list)
 
 
+@app.route('/charts')
+def charts():
+
+    adjusted_domestic_dict = {
+        'movie_name': (all_time_adjusted_domestic["name"].values),
+        'movie_year': (all_time_adjusted_domestic["year"].values),
+        'movie_d_box': (all_time_adjusted_domestic["domestic_box_office"].values),
+        'movie_i_box': (all_time_adjusted_domestic["international_box_office"].values),
+        'movie_w_box': (all_time_adjusted_domestic["worldwide_box_office"].values)
+
+    }
+
+    animated_domestic_dict = {
+        'movie_name': (all_time_animated_domestic["name"].values),
+        'movie_year': (all_time_animated_domestic["year"].values),
+        'movie_d_box': (all_time_animated_domestic["domestic_box_office"].values),
+        'movie_i_box': (all_time_animated_domestic["international_box_office"].values),
+        'movie_w_box': (all_time_animated_domestic["worldwide_box_office"].values)
+    }
+    animated_international_dict = {
+        'movie_name': (all_time_animated_international["name"].values),
+        'movie_year': (all_time_animated_international["year"].values),
+        'movie_d_box': (all_time_animated_international["domestic_box_office"].values),
+        'movie_i_box': (all_time_animated_international["international_box_office"].values),
+        'movie_w_box': (all_time_animated_international["worldwide_box_office"].values)
+
+    }
+    domestic_dict = {
+        'movie_name': (all_time_domestic["name"].values),
+        'movie_year': (all_time_domestic["year"].values),
+        'movie_d_box': (all_time_domestic["domestic_box_office"].values),
+        'movie_i_box': (all_time_domestic["international_box_office"].values),
+        'movie_w_box': (all_time_domestic["worldwide_box_office"].values)
+
+    }
+    international_dict = {
+        'movie_name': (all_time_international["name"].values),
+        'movie_year': (all_time_international["year"].values),
+        'movie_d_box': (all_time_international["domestic_box_office"].values),
+        'movie_i_box': (all_time_international["international_box_office"].values),
+        'movie_w_box': (all_time_international["worldwide_box_office"].values)
+
+    }
+    worldwide_dict = {
+        'movie_name': (all_time_worldwide["name"].values),
+        'movie_year': (all_time_worldwide["year"].values),
+        'movie_d_box': (all_time_worldwide["domestic_box_office"].values),
+        'movie_i_box': (all_time_worldwide["international_box_office"].values),
+        'movie_w_box': (all_time_worldwide["worldwide_box_office"].values)
+
+    }
+    print(domestic_dict)
+    return render_template('charts.html', adjusted_domestic_dict=adjusted_domestic_dict, domestic_dict=domestic_dict, animated_domestic_dict=animated_domestic_dict, animated_international_dict=animated_international_dict, international_dict=international_dict, worldwide_dict=worldwide_dict)
+
+
 @app.route('/about_us')
 def about_us():
 
     return render_template('about_us.html')
+
+
+@app.route('/charts/domestic_charts')
+def domestic_charts():
+
+    domestic_dict = {
+        'movie_name': (all_time_domestic["name"].values),
+        'movie_year': (all_time_domestic["year"].values),
+        'movie_d_box': (all_time_domestic["domestic_box_office"].values),
+        'movie_i_box': (all_time_domestic["international_box_office"].values),
+        'movie_w_box': (all_time_domestic["worldwide_box_office"].values)
+    }
+
+    return render_template('all_time_domestic.html', domestic_dict=domestic_dict)
+
+
+@app.route('/charts/domestic_charts_adjusted')
+def domestic_charts_adjusted():
+
+    adjusted_domestic_dict = {
+        'movie_name': (all_time_adjusted_domestic["name"].values),
+        'movie_year': (all_time_adjusted_domestic["year"].values),
+        'movie_d_box': (all_time_adjusted_domestic["domestic_box_office"].values),
+        'movie_i_box': (all_time_adjusted_domestic["international_box_office"].values),
+        'movie_w_box': (all_time_adjusted_domestic["worldwide_box_office"].values)
+    }
+
+    return render_template('domestic_adjusted.html', adjusted_domestic_dict=adjusted_domestic_dict)
+
+
+@app.route('/charts/domestic_charts_animated')
+def domestic_charts_animated():
+
+    animated_domestic_dict = {
+        'movie_name': (all_time_animated_domestic["name"].values),
+        'movie_year': (all_time_animated_domestic["year"].values),
+        'movie_d_box': (all_time_animated_domestic["domestic_box_office"].values),
+        'movie_i_box': (all_time_animated_domestic["international_box_office"].values),
+        'movie_w_box': (all_time_animated_domestic["worldwide_box_office"].values)
+    }
+
+    return render_template('domestic_animated.html', animated_domestic_dict=animated_domestic_dict)
+
+
+@app.route('/charts/international_charts')
+def international_charts():
+
+    international_dict = {
+        'movie_name': (all_time_international["name"].values),
+        'movie_year': (all_time_international["year"].values),
+        'movie_d_box': (all_time_international["domestic_box_office"].values),
+        'movie_i_box': (all_time_international["international_box_office"].values),
+        'movie_w_box': (all_time_international["worldwide_box_office"].values)
+    }
+
+    return render_template('all_time_international.html', international_dict=international_dict)
+
+
+@app.route('/charts/international_charts_animated')
+def international_charts_animated():
+
+    animated_international_dict = {
+        'movie_name': (all_time_animated_international["name"].values),
+        'movie_year': (all_time_animated_international["year"].values),
+        'movie_d_box': (all_time_animated_international["domestic_box_office"].values),
+        'movie_i_box': (all_time_animated_international["international_box_office"].values),
+        'movie_w_box': (all_time_animated_international["worldwide_box_office"].values)
+    }
+
+    return render_template('international_animated.html', animated_international_dict=animated_international_dict)
+
+
+@app.route('/charts/worldwide_charts')
+def worldwide_charts():
+
+    worldwide_dict = {
+        'movie_name': (all_time_worldwide["name"].values),
+        'movie_year': (all_time_worldwide["year"].values),
+        'movie_d_box': (all_time_worldwide["domestic_box_office"].values),
+        'movie_i_box': (all_time_worldwide["international_box_office"].values),
+        'movie_w_box': (all_time_worldwide["worldwide_box_office"].values)
+    }
+
+    return render_template('all_time_worldwide.html', worldwide_dict=worldwide_dict)
 
 
 if __name__ == '__main__':
