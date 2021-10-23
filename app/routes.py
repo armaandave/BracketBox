@@ -10,7 +10,7 @@ import random
 current_year = date.today().year
 master_table = pd.read_csv('mdata/final_result/master_table.csv')
 weekly_table = pd.read_csv('mdata/thenum/weekly_tops/weekly_tops.csv')
-yearly_table = pd.read_csv('mdata/thenum/yearly_tops/2020_tops.csv')
+yearly_table = pd.read_csv('mdata/thenum/yearly_tops/2021_tops.csv')
 binned_table = pd.read_csv('mdata/final_result/binned_table.csv')
 genre_table = pd.read_csv('mdata/final_result/genre_table.csv')
 in_theateres_table = pd.read_csv(
