@@ -32,6 +32,8 @@ all_time_domestic = pd.read_csv('mdata/thenum/charts/all_time_domestic.csv')
 all_time_international = pd.read_csv(
     'mdata/thenum/charts/all_time_international.csv')
 all_time_worldwide = pd.read_csv('mdata/thenum/charts/all_time_worldwide.csv')
+average_table = pd.read_csv('mdata/final_result/final_averages.csv')
+print(len(average_table))
 
 
 @app.route('/')
@@ -126,9 +128,26 @@ def movie_page(movie_data):
 
     }
 
+    average_dict = {
+
+        'domestic_box_office': int(average_table["domestic_box_office"]),
+        'international_box_office': int(average_table["international_box_office"]),
+        'worldwide_box_office': int(average_table["worldwide_box_office"]),
+        'opening_weekend': int(average_table["opening_weekend"]),
+        'production_budget': int(average_table["production_budget"]),
+        'theater_counts': int(average_table["theater_counts"]),
+        'running_time': int(average_table["running_time"]),
+        'imdb_score': int(average_table["imdb_score"]),
+        'bb_profit': int(average_table["bb_profit"]),
+        'bb_profit_score': int(average_table["bb_profit_score"]),
+        'bb_score': int(average_table["bb_score"]),
+        'domestic_share': int(average_table["domestic_share"]),
+        'international_share': int(average_table["international_share"])
+
+    }
+
     x = len(ast.literal_eval(movie_info["similar_movies"].values[0]))
 
-    print(movie_dict)
     movie_dict['genre_bb'] = genre_table[genre_table.genre ==
                                          movie_dict['movie_genre']].bb_score.values[0]
 

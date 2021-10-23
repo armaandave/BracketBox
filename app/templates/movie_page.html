@@ -19,162 +19,162 @@
 </head>
 
 <body>
-  
+
   <div class="container-fluid parent_div">
     <div class="main_div mb-5">
       <nav class="navbar navbar-expand-sm navbar-light d-flex justify-content-left bb_nav">
         <!-- Brand/logo -->
         <a class="navbar-brand" href="{{ url_for('index') }}">
-            <img
-                width="70"
-                height="70"
-                class="d-inline-block"
-                src="{{ url_for('static',
-                filename='img/isolated-monochrome-black.svg') }}"
-                alt=""
-            >
-            Bracket Box
+          <img width="70" height="70" class="d-inline-block" src="{{ url_for('static',
+                filename='img/isolated-monochrome-black.svg') }}" alt="">
+          Bracket Box
         </a>
         <!-- Links -->
         <ul class="navbar-nav">
-            <li class="nav-item bb_nav_item">
-                <a class="nav-link bb_nav_item" href="/movie_list"> All Movies</a>
-            </li>
-            <li class="nav-item bb_nav_item">
-                <a class="nav-link bb_nav_item" href="/trending">Trending</a>
-            </li>
-            <li class="nav-item bb_nav_item">
-              <a class="nav-link bb_nav_item" href="/charts">Charts</a>
+          <li class="nav-item bb_nav_item">
+            <a class="nav-link bb_nav_item" href="/movie_list"> All Movies</a>
           </li>
-            <li class="nav-item bb_nav_item">
-                <a class="nav-link bb_nav_item" href="/about_us">About us</a>
-            </li>
+          <li class="nav-item bb_nav_item">
+            <a class="nav-link bb_nav_item" href="/trending">Trending</a>
+          </li>
+          <li class="nav-item bb_nav_item">
+            <a class="nav-link bb_nav_item" href="/charts">Charts</a>
+          </li>
+          <li class="nav-item bb_nav_item">
+            <a class="nav-link bb_nav_item" href="/about_us">About us</a>
+          </li>
         </ul>
-    </nav>
-    <div class="container stats_div">
+      </nav>
+      <div class="container stats_div">
 
-      <div class="d-flex row col-12 all_movie_info">
-        <div class="col-3 d-flex">
-          <img src={{movie_data['movie_poster']}} id="movie_poster" class="float-left main_poster"
-            alt="{{movie_data[" movie_title" ]}}" width="242px" height="363px">
-        </div>
-        <div class="col-9">
-
-          <div class="d-flex flex-row col-12 justify-content-start mb-1 title">
-            {{movie_data["movie_title"]}} ({{movie_data["movie_year"]}})
+        <div class="d-flex row col-12 all_movie_info">
+          <div class="col-3 d-flex">
+            <img src={{movie_data["movie_poster"]}} id="movie_poster" class="float-left main_poster" alt="{{movie_data['
+              movie_title']}}" width="242px" height="363px">
           </div>
-          <div class="d-flex flex-row col-12">
-            <div class="alert grade_color_box col-3 center" data-color="{{movie_data["movie_score"]}}">
-              <a href="/about_us">
-                <span class="imdb_score_text">{{movie_data["movie_score"]}}</span>
-              </a>
+          <div class="col-9">
+
+            <div class="d-flex flex-row col-12 justify-content-start mb-1 title">
+              {{movie_data["movie_title"]}} ({{movie_data["movie_year"]}})
+            </div>
+            <div class="d-flex flex-row col-12">
+              <div class="alert grade_color_box col-3 center"data-color="{{movie_data['movie_score']}}">
+                <a href="/about_us">
+                  <span class="imdb_score_text">{{movie_data["movie_score"]}}</span>
+                </a>
+              </div>
+
+              <div class="alert imdb_color_box col-1 ml-3 justify-content-center">
+                <a href="https://imdb.com/title/{{movie_data['movie_imdb_id']}}">
+                  <span class="imdb_score_text">{{movie_data['movie_imdb_score']}}</span>
+                </a>
+                <span class="imdb_text">IMDb</span>
+
+              </div>
+
+              <div class="alert rotten_color_box col-1 ml-3 justify-content-center">
+                <a href="https://www.metacritic.com/movie/{{movie_data['movie_slug_name']}}">
+                  <span class="imdb_score_text">
+                    <!-- {{movie_data["movie_meta_score"]}} -->
+                  </span>
+                </a>
+                <span class="imdb_text">Metascore</span>
+              </div>
+
+              <div class="col-3 mt-4 rating">
+                <span>{{movie_data["movie_mpaa_rating"]}}</span><br />
+                <span>{{movie_data["movie_genre"]}}</span><br />
+              </div>
+              <div class="col-6 pr-0 "></div>
             </div>
 
-            <div class="alert imdb_color_box col-1 ml-3 justify-content-center">
-              <a href="https://imdb.com/title/{{movie_data["movie_imdb_id"]}}">
-                <span class="imdb_score_text">{{movie_data["movie_imdb_score"]}}</span>
-              </a>
-              <span class="imdb_text">IMDb</span>
-
-            </div>
-
-            <div class="alert rotten_color_box col-1 ml-3 justify-content-center">
-              <a href="https://www.metacritic.com/movie/{{movie_data["movie_slug_name"]}}">
-                <span class="imdb_score_text"><!-- {{movie_data["movie_meta_score"]}} --></span>
-              </a>
-              <span class="imdb_text">Metascore</span>
-            </div>
-
-            <div class="col-3 mt-4 rating">
-              <span>{{movie_data["movie_mpaa_rating"]}}</span><br />
-              <span>{{movie_data["movie_genre"]}}</span><br />
-            </div>
-            <div class="col-6 pr-0 "></div>
-          </div>
-
-          <div class="col-12 d-flex justify-content-end align-items-start
+            <div class="col-12 d-flex justify-content-end align-items-start
                   pl-3">
-            <table class="table table-bordered table_movie_dataset mt-2">
-              <tbody>
-                <tr>
-                  <th scope="row">Opening Weekend:</th>
-                  <td colspan="2">${{movie_data["movie_opening_weekend"]}}</td>
-                </tr>
-                <tr>
-                  <th scope="row">Domestic Gross:</th>
-                  <td>${{movie_data["movie_domestic_gross"]}}</td>
-                </tr>
-                <tr>
-                  <th scope="row">International Gross:</th>
-                  <td colspan="2">${{movie_data["movie_international_gross"]}}</td>
-                </tr>
-                <tr>
-                  <th scope="row">Worldwide Gross:</th>
-                  <td>${{movie_data["movie_worldwide_gross"]}}</td>
-                </tr>
-                <tr>
-                  <th scope="row">Budget:</th>
-                  <td colspan="2">${{movie_data["movie_budget"]}}</td>
-                </tr>
-              </tbody>
-            </table>
+              <table class="table table-bordered table_movie_dataset mt-2">
+                <tbody>
+                  <tr>
+                    <th scope="row">Opening Weekend:</th>
+                    <td colspan="2">${{movie_data["movie_opening_weekend"]}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Domestic Gross:</th>
+                    <td>${{movie_data["movie_domestic_gross"]}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">International Gross:</th>
+                    <td colspan="2">${{movie_data["movie_international_gross"]}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Worldwide Gross:</th>
+                    <td>${{movie_data["movie_worldwide_gross"]}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Budget:</th>
+                    <td colspan="2">${{movie_data["movie_budget"]}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+
           </div>
 
+        </div>
+        <div class="d-flex row col-12 mt-4">
+
+          <div class="comment more">
+            {{movie_data["movie_synopsis"]}}
+          </div>
 
         </div>
-
-      </div>
-      <div class="d-flex row col-12 mt-4">
-
-        <div class="comment more">
-          {{movie_data["movie_synopsis"]}}
-        </div>
-
-      </div>
-      <div class="d-flex row">
-<!--         <div class="col-6 mt-5">
+        <div class="d-flex row">
+          <!--         <div class="col-6 mt-5">
           <canvas id="myChart" width="400" height="400"></canvas>
         </div> -->
 
-        <div  class="col-12 mt-3" id="chart">
-        </div>
-        <div  class="mt-5" id="chart3">
-        </div>
-
-
-       <!--  <div class="row ml-1 mr-1 mb-5 ">
-          <h5 class="ml-3 mt-5">Similar Titles: </h5>
-
-          <div class="row ml-1 mr-1">
-            {% for y in range(0,x)%}
-            <div class="col-sm-2">
-              <a href="/movie_page/{{movie_data["movie_sim_movies"][y].get("link")}}">
-                <div class="card-block">
-
-                  <img class="card-img-top" src="{{movie_data["movie_sim_movies"][y].get("poster")}}"
-                    alt="{{movie_data["movie_sim_movies"][y].get("name")}}" height="205px" width="307.5">
-
-                  <div class="card-img-overlay">
-
-                    <span class="label label-default"></span>
-                  </div>
-                  <div class="home_title">
-                  </div>
-                </div>
-              </a>
+          <div class="col-12 mt-3" id="chart">
+          </div>
+          <div class="col-12">
+            <div class="col-3 mt-5" id="chart3">
             </div>
-            {% endfor %}
-          </div> -->
+            <div class="col-8">
+
+            </div>
+          </div>
+
+          <div class="row ml-1 mr-1 mb-5 ">
+            <h5 class="ml-3 mt-5">Similar Titles: </h5>
+
+            <div class="row ml-1 mr-1">
+              {% for y in range(0,x)%}
+              <div class="col-sm-2">
+                <a href="/movie_page/{{movie_data['movie_sim_movies'][y].get('link')}}">
+                  <div class="card-block">
+
+                    <img class="card-img-top sim_posters" src="{{movie_data['movie_sim_movies'][y].get('poster')}}"
+                      alt="{{movie_data['movie_sim_movies'][y].get('name')}}">
+
+                    <div class="card-img-overlay">
+
+                      <span class="label label-default"></span>
+                    </div>
+                    <div class="home_title">
+                    </div>
+                  </div>
+                </a>
+              </div>
+              {% endfor %}
+            </div>
 
 
+
+          </div>
 
         </div>
-
       </div>
-    </div>
-    
 
-    
+
+
 </body>
 <script>
   $(document).ready(function () {
@@ -212,12 +212,15 @@
   });
 </script>
 <script>
-  var genre_bb = {{ movie_data["genre_bb"] }};
-  var movie_bb = {{ movie_data["movie_score"] }};
+  var genre_bb = {{ movie_data["genre_bb"]}};
+  var movie_bb = {{ movie_data["movie_score"]}};
   var movie_bb_arr = [];
   var genre_bb_arr = [];
-  var bb_avg_years = {{ values| tojson}};
-  for (var i = 0; i < bb_avg_years.length; i++) {
+  var bb_avg_years = [];
+  var bb_avg_values = {{ values | tojson}};
+
+  for (var i = 0; i < bb_avg_values.length; i++) {
+  	bb_avg_years.push(Math.round(parseInt(bb_avg_values[i])));
     genre_bb_arr.push(genre_bb);
     movie_bb_arr.push(movie_bb);
   }
@@ -432,75 +435,75 @@
 
   console.log(movie_name)
 
-        var options = {
-          series: [{
-          name: "Yearly Score Averages",
-          type: 'column',
-          data: bb_avg_years
-        }, {
-          name: movie_name,
-          type: 'line',
-          data: movie_bb_arr
-        }],
-          chart: {
-          height: '400px',
-          type: 'line',
-        },
-        stroke: {
-          width: [0, 4]
-        },
+  var options = {
+    series: [{
+      name: "Yearly Score Averages",
+      type: 'column',
+      data: bb_avg_years
+    }, {
+      name: movie_name,
+      type: 'line',
+      data: movie_bb_arr
+    }],
+    chart: {
+      height: '400px',
+      type: 'line',
+    },
+    stroke: {
+      width: [0, 4]
+    },
 
-        dataLabels: {
-          enabled: true,
-          enabledOnSeries: [0],
+    dataLabels: {
+      enabled: true,
+      enabledOnSeries: [0],
+    },
+    xaxis: {
+      categories: {{ labels| tojson}}
         },
-        xaxis: {
-          categories: {{ labels| tojson}}
-        },
-        yaxis: [{
-          title: {
-            text: 'Score',
-          },
-        
-        }]
+  yaxis: [{
+    title: {
+      text: 'Score',
+    },
+
+  }]
         };
 
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
+  var chart = new ApexCharts(document.querySelector("#chart"), options);
+  chart.render();
 
 
-        
-      
+
+
 </script>
 
 <script>
-    var i_bb = {{ movie_data["movie_international_share"] }};
-    var d_bb = {{ movie_data["movie_domestic_share"] }};
+  var i_bb = {{ movie_data["movie_international_share"] }};
+  var d_bb = {{ movie_data["movie_domestic_share"] }};
 
 
 
   var options = {
-          series: [d_bb, i_bb],
-          chart: {
-          width: 450,
-          type: 'pie',
+    series: [d_bb, i_bb],
+    chart: {
+      width: 450,
+      type: 'pie',
+    },
+    labels: ['Domestic Share', 'International Share'],
+    responsive: [{
+      breakpoint: 480,
+      options: {
+        chart: {
+          width: 300
         },
-        labels: ['Domestic Share', 'International Share'],
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 300
-            },
-            legend: {
-              position: 'bottom'
-            }
-          }
-        }]
-        };
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }]
+  };
 
-        var chart3 = new ApexCharts(document.querySelector("#chart3"), options);
-        chart3.render();
+  var chart3 = new ApexCharts(document.querySelector("#chart3"), options);
+  chart3.render();
 </script>
 
 </html>

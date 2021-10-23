@@ -1,57 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Trending</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static',
+
+<head>
+    <title>Trending</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',
       filename='css/style.css') }}">
-    </head>
-    <body>
-        <div class="main_div mb-5">
-            <nav class="navbar navbar-expand-sm navbar-light d-flex justify-content-left bb_nav">
-                <!-- Brand/logo -->
-                <a class="navbar-brand" href="{{ url_for('index') }}">
-                    <img
-                        width="70"
-                        height="70"
-                        class="d-inline-block"
-                        src="{{ url_for('static',
-                    filename='img/isolated-monochrome-black.svg') }}"
-                        alt=""
-                    >
-                    Bracket Box
-                </a>
-                <!-- Links -->
-                <ul class="navbar-nav">
-                    <li class="nav-item bb_nav_item">
-                        <a class="nav-link bb_nav_item" href="/movie_list"> All Movies</a>
-                    </li>
-                    <li class="nav-item bb_nav_item">
-                        <a class="nav-link bb_nav_item" href="/trending">Trending</a>
-                    </li>
-                    <li class="nav-item bb_nav_item">
-                        <a class="nav-link bb_nav_item" href="/charts">Charts</a>
-                    </li>
-                    <li class="nav-item bb_nav_item">
-                        <a class="nav-link bb_nav_item" href="/about_us">About us</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="container-fluid parent_div">
-                <h4 class="ml-3  trending_labels">
-                    Currently In Theatres:
+</head>
+
+<body>
+    <div class="main_div mb-5">
+        <nav class="navbar navbar-expand-sm navbar-light d-flex justify-content-left bb_nav">
+            <!-- Brand/logo -->
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <img width="70" height="70" class="d-inline-block" src="{{ url_for('static',
+                    filename='img/isolated-monochrome-black.svg') }}" alt="">
+                Bracket Box
+            </a>
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item bb_nav_item">
+                    <a class="nav-link bb_nav_item" href="/movie_list"> All Movies</a>
+                </li>
+                <li class="nav-item bb_nav_item">
+                    <a class="nav-link bb_nav_item" href="/trending">Trending</a>
+                </li>
+                <li class="nav-item bb_nav_item">
+                    <a class="nav-link bb_nav_item" href="/charts">Charts</a>
+                </li>
+                <li class="nav-item bb_nav_item">
+                    <a class="nav-link bb_nav_item" href="/about_us">About us</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="container-fluid parent_div">
+            <h4 class="ml-3  trending_labels">
+                Currently In Theatres:
                 </h1>
                 <div class="row">
                     {% for y in range(0,6)%}
                     <div class="col-sm-2">
                         <div class="card-block">
-                            <img class="card-img-top trending_poster" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{current_poster_list[y]}}" alt="Card image">
+                            <img class="card-img-top trending_poster"
+                                src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{current_poster_list[y]}}"
+                                alt="Card image">
                             <div class="">
                                 <span class="label label-default"></span>
                             </div>
@@ -63,61 +61,67 @@
                     {% endfor %}
                     <h4 class="ml-3 pt-5 trending_labels">
                         Soon In Theatres:
-                    </h1>
-                    <div class="row ml-1 mr-1 ">
-                        {% for y in range(0,6)%}
-                        <div class="col-sm-2">
-                            <div class="card-block">
-                                <img class="card-img-top trending_poster" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{upcoming_poster_list[y]}}" alt="Card image">
-                                <div class="card-img-overlay">
-                                    <span class="label label-default"></span>
-                                </div>
-                                <div class="home_title">
-                                    <a></a>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    <h4 class="ml-3 pt-5 trending_labels">Popular Movies:</h4>
-                    <div class="row ml-1 mr-1 ">
-                        {% for y in range(0,6)%}
-                        <div class="col-sm-2">
-                            <div class="card-block">
-                                <img class="card-img-top trending_poster" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{popular_poster_list[y]}}" alt="Card image">
-                                <div class="card-img-overlay">
-                                    <span class="label label-default"></span>
-                                </div>
-                                <div class="home_title">
-                                    <a></a>
+                        </h1>
+                        <div class="row ml-1 mr-1 ">
+                            {% for y in range(0,6)%}
+                            <div class="col-sm-2">
+                                <div class="card-block">
+                                    <img class="card-img-top trending_poster"
+                                        src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{upcoming_poster_list[y]}}"
+                                        alt="Card image">
+                                    <div class="card-img-overlay">
+                                        <span class="label label-default"></span>
+                                    </div>
+                                    <div class="home_title">
+                                        <a></a>
+                                    </div>
                                 </div>
                             </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
-                    </div>
-                    <h4 class="ml-3 pt-5 trending_labels">
-                        Popular TV Shows:
-                    </h1>
-                    <div class="row ml-1 mr-1 ">
-                        {% for y in range(0,6)%}
-                        <div class="col-sm-2">
-                            <div class="card-block">
-                                <img class="card-img-top trending_poster" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{popular_tv_poster_list[y]}}" alt="Card image">
-                                <div class="card-img-overlay">
-                                    <span class="label label-default"></span>
-                                </div>
-                                <div class="home_title">
-                                    <a></a>
+                        <h4 class="ml-3 pt-5 trending_labels">Popular Movies:</h4>
+                        <div class="row ml-1 mr-1 ">
+                            {% for y in range(0,6)%}
+                            <div class="col-sm-2">
+                                <div class="card-block">
+                                    <img class="card-img-top trending_poster"
+                                        src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{popular_poster_list[y]}}"
+                                        alt="Card image">
+                                    <div class="card-img-overlay">
+                                        <span class="label label-default"></span>
+                                    </div>
+                                    <div class="home_title">
+                                        <a></a>
+                                    </div>
                                 </div>
                             </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
-                    </div>
+                        <h4 class="ml-3 pt-5 trending_labels">
+                            Popular TV Shows:
+                            </h1>
+                            <div class="row ml-1 mr-1 ">
+                                {% for y in range(0,6)%}
+                                <div class="col-sm-2">
+                                    <div class="card-block">
+                                        <img class="card-img-top trending_poster"
+                                            src="https://image.tmdb.org/t/p/w300_and_h450_bestv2{{popular_tv_poster_list[y]}}"
+                                            alt="Card image">
+                                        <div class="card-img-overlay">
+                                            <span class="label label-default"></span>
+                                        </div>
+                                        <div class="home_title">
+                                            <a></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
                 </div>
-            </div>
-        </body>
-        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script>
+        </div>
+</body>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
     $(function () {
         $('a').each(function () {
             if ($(this).prop('href') == window.location.href) {
@@ -125,5 +129,6 @@
             }
         });
     });
-        </script>
-    </html>
+</script>
+
+</html>

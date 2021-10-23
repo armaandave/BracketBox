@@ -448,3 +448,42 @@ font-style: italic;
     color: black;
 
 }
+.sim_posters {
+
+    border-radius: 7%;
+
+}
+
+.list_score {
+    color: black;
+    font-weight: bolder;
+    text-align: right;
+}
+
+.list_color_box {
+
+    color: #293845;
+    font-size: 1em;
+    font-weight: lighter;
+    background-color: #90bcb3;
+    border-color: #207868;
+    border-radius: 0px;
+    padding: .3rem .5rem;
+    max-width: 100px;
+    max-height: 100px;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    font-family: "Varela";
+    text-align: center;
+    border-radius: 15%;
+    font-weight: 300;
+}
+
+.ais-Hits-item {
+    padding: 0.25em !important;
+}
+
+.ais-Hits-list {
+    margin-top: 0.25rem !important;
+}
