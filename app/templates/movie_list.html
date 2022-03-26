@@ -35,7 +35,7 @@
             <a class="nav-link bb_nav_item" href="/trending">Trending</a>
           </li>
           <li class="nav-item bb_nav_item">
-            <a class="nav-link bb_nav_item" href="/charts">Charts</a>
+            <a class="nav-link bb_nav_item" href="/charts">All Time</a>
           </li>
           <li class="nav-item bb_nav_item">
             <a class="nav-link bb_nav_item" href="/about_us">About us</a>
@@ -110,7 +110,6 @@
   function hitTemplate(hit) {
     const name = hit.name.toString().replace(/ /g, "%20");
     const url = "/movie_page/" + name + '^' + hit.year;
-    console.log(url)
 
     return `
   <div class="hit">
@@ -124,7 +123,7 @@
 
       </div >
     </a >
-    </div >
+    </div>
   `;
   }
 

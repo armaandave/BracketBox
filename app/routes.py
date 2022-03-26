@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, url_for
+from flask import render_template, url_for, Response
 import pandas as pd
 from datetime import date
 from flask import json
@@ -316,6 +316,12 @@ def worldwide_charts():
 
     return render_template('all_time_worldwide.html', worldwide_dict=worldwide_dict)
 
+
+@app.route('/robots.txt')
+def noindex():
+    r = Response(response="User-Agent: *\nDisallow: /\n", status=200, mimetype="text/plain")
+    r.headers["Content-Type"] = "text/plain; charset=utf-8"
+    return r
 
 if __name__ == '__main__':
     app.run(debug=True)
